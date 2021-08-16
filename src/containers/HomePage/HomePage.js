@@ -3,7 +3,7 @@ import React from "react";
 const HomePage = () => {
 
     return (
-        <div className="Homepage_div">
+        <div className="Sticky_footer_Content_wrapper">
             <h1>HomePage</h1>
             <div className="ui fluid three item menu">
                 <div className="item">All Jobs</div>

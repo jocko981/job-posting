@@ -4,11 +4,12 @@ import LoginPage from "./LoginPage/LoginPage";
 import HomePage from "./HomePage/HomePage";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
+import history from "../history";
 
 const App = () => {
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router history={history}>
         <Navbar />
 
         <Switch>
@@ -17,7 +18,7 @@ const App = () => {
         </Switch>
 
         <Footer />
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }
