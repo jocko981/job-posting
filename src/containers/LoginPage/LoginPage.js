@@ -1,8 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LoginPage.css";
 
 const LoginPage = () => {
+    const [loginValue, setLoginValue] = useState({ email: "", password: "" });
+    const [loginErr, setLoginErr] = useState(null);
+    
+    const registerPasswordValidation = (loginVal) => {
+        return loginVal.password.match(/^(?=.*\d).{8,}$/)
+        // A be ovo treba za Registration! samo da ima min 8 chars
+    }
 
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+
+        setLoginValue((prevValue) => {
+            return {
+                ...prevValue,
+                [name]: value
+            };
+        });
+    }
+    const onLoginSubmit = (e) => {
+        e.preventDefault();
+
+        if(registerPasswordValidation(loginValue)) {
+            setLoginErr(null);
+            console.log("Succesfully logged in test");
+        } else
+        setLoginErr("Kao neki Err ako je Password < 8 chars")
+    }
 
     return (
         <div className="Sticky_footer_Content_wrapper">
@@ -17,26 +43,37 @@ const LoginPage = () => {
                         </div>
                     </h2>
 
-                    <form className="ui large form">
+                    <form onSubmit={onLoginSubmit} className="ui large form">
                         <div className="ui stacked segment">
                             <div className="field">
                                 <div className="ui left icon input">
                                     <i className="user icon" />
-                                    <input type="text" name="email" placeholder="E-mail address" />
+                                    <input
+                                        type="text"
+                                        name="email"
+                                        placeholder="E-mail address"
+                                        onChange={handleChange}
+                                    />
                                 </div>
                             </div>
                             <div className="field">
                                 <div className="ui left icon input">
                                     <i className="lock icon" />
-                                    <input type="password" name="password" placeholder="Password" />
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        placeholder="Password"
+                                        onChange={handleChange}
+                                        maxLength="199"
+                                    />
                                 </div>
                             </div>
-                            <div className="ui fluid large teal submit button">Login</div>
+                            <button className="ui fluid large teal submit button">Login</button>
                         </div>
                     </form>
 
                     <div className="error_backround">
-                        <div className="">Error message here</div>
+                        <div className="">{loginErr}</div>
                     </div>
 
                     <div className="ui message">
