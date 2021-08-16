@@ -1,0 +1,26 @@
+
+/* edit semantic */
+.column {
+    max-width: 450px;
+}
+.ui.grid {
+    margin: 0;
+}
+.ui.header>.image:not(.icon), .ui.header>img {
+    width: 3em;
+}
+.ui.stacked.segment {
+    font-size: 1em;
+}
+.ui.stacked.segment::after {
+    content: none;
+}
+
+.error_backround {
+    color: tomato;
+    background: rgba(0,0,0,.03);
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: .28571429rem;
+    margin-top: -6px;
+    padding: 4px;
+}

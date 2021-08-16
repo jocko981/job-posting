@@ -7,7 +7,6 @@ const Navbar = () => {
             <div className="ui inverted menu">
                 <div className="header item">Brand</div>
                 <Link to="/" className="active item">Home</Link>
-                <Link to="/login" className="item">New Post</Link>
                 <div className="ui dropdown item" tabIndex="0">
                     Dropdown
                     <i className="dropdown icon" />
@@ -32,7 +31,7 @@ const Navbar = () => {
                     </div>
 
                     <div className="item">
-                        <button className="ui inverted blue button">Click za nesto</button>
+                        <Link to="/login"><button className="ui inverted blue button">Za Login/Logout</button></Link>
                     </div>
                 </div>
             </div>
