@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
+import axios from "axios";
 
 const LoginPage = () => {
     const [loginValue, setLoginValue] = useState({ email: "", password: "" });
     const [loginErr, setLoginErr] = useState(null);
-    
+
     const registerPasswordValidation = (loginVal) => {
         return loginVal.password.match(/^(?=.*\d).{8,}$/)
         // A be ovo treba za Registration! samo da ima min 8 chars
@@ -23,11 +24,16 @@ const LoginPage = () => {
     const onLoginSubmit = (e) => {
         e.preventDefault();
 
-        if(registerPasswordValidation(loginValue)) {
+        axios.get('/pots')
+        .then( res => console.log(res) )
+        .catch( err => console.log(err) )
+
+        if (registerPasswordValidation(loginValue)) {
             setLoginErr(null);
             console.log("Succesfully logged in test");
-        } else
-        setLoginErr("Kao neki Err ako je Password < 8 chars")
+        } else {
+            setLoginErr("Kao neki Err ako je Password < 8 chars")
+        }
     }
 
     return (
