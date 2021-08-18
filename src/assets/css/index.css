@@ -73,3 +73,18 @@ footer {
   margin-top: -6px;
   padding: 4px;
 }
+
+.skills_select_list .item {
+  float: left;
+  background-color: lightgoldenrodyellow;
+  background-color: rgb(69 78 92 / 20%);
+  border-radius: 3px;
+  border-bottom: 2px solid lightgray;
+  border-bottom: 2px solid rgb(69 78 92 / 20%);
+  padding: 8px 8px;
+  margin: 6px;
+}
+.skills_select_list .item:hover{
+  border-bottom: 2px solid rgb(69 78 92 / 60%);
+
+}

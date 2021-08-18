@@ -44,6 +44,7 @@ const CompanyRegistration = () => {
                         <div className="ui left icon input">
                             <i className="user icon" />
                             <input
+                                required
                                 type="text"
                                 name="email"
                                 placeholder="E-mail address"
@@ -55,6 +56,7 @@ const CompanyRegistration = () => {
                         <div className="ui left icon input">
                             <i className="lock icon" />
                             <input
+                                required
                                 type="password"
                                 name="password"
                                 placeholder="Password"
@@ -67,6 +69,7 @@ const CompanyRegistration = () => {
                         <div className="ui left icon input">
                             <i className="lock icon" />
                             <input
+                                required
                                 type="password"
                                 name="password_confirmation"
                                 placeholder="Confirm Password"

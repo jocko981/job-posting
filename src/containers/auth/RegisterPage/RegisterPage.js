@@ -17,6 +17,9 @@ const RegisterPage = () => {
         } else setSelected(false);
     }
 
+    // ovde ce ComponentDidMount{ fetchAllSkills ---> i prikazi react-select meni, 
+    // ako nema fetch data, onda: Msg: Fetching skills... }
+
     return (
         <div className="Sticky_footer_Content_wrapper">
             <div className="ui middle aligned center aligned grid">
