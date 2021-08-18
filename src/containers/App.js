@@ -1,10 +1,13 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect, Router } from "react-router-dom";
-import LoginPage from "./LoginPage/LoginPage";
-import HomePage from "./HomePage/HomePage";
+import history from "../history";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
-import history from "../history";
+//auth
+import LoginPage from "./auth/LoginPage/LoginPage";
+import RegisterPage from "./auth/RegisterPage/RegisterPage";
+// 
+import HomePage from "./HomePage/HomePage";
 
 const App = () => {
   return (
@@ -14,6 +17,7 @@ const App = () => {
 
         <Switch>
           <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/register" component={RegisterPage} />
           <Route exact path="/" component={HomePage} />
         </Switch>
 

@@ -4,10 +4,11 @@ import history from "../history";
 // axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
 // axios.defaults.headers.post['Content-Type'] = 'application/json';
 
-//              THESE are GLOBAL Interceptors !!!! !!!!
+//              THESE are GLOBAL Interceptors !!!! !!!!  
+// Here we use Global config for axios. Down bellow is example how to make instance instead of confoguring global instance
 
 // set baseURL
-axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
 
 // For GET requests
 axios.interceptors.request.use(
@@ -60,7 +61,6 @@ axios.interceptors.response.use(
 
 // export default (history = null) => {
 //     const baseURL = process.env.REACT_APP_BACKEND_URL;
-  
   
 //     let headers = {};
   

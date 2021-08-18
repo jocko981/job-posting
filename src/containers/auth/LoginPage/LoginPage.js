@@ -1,15 +1,9 @@
 import React, { useState } from "react";
-import "./LoginPage.css";
 import axios from "axios";
 
 const LoginPage = () => {
     const [loginValue, setLoginValue] = useState({ email: "", password: "" });
     const [loginErr, setLoginErr] = useState(null);
-
-    const registerPasswordValidation = (loginVal) => {
-        return loginVal.password.match(/^(?=.*\d).{8,}$/)
-        // A be ovo treba za Registration! samo da ima min 8 chars
-    }
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -24,11 +18,11 @@ const LoginPage = () => {
     const onLoginSubmit = (e) => {
         e.preventDefault();
 
-        axios.get('/pots')
+        axios.post('/auth/login', loginValue)
         .then( res => console.log(res) )
         .catch( err => console.log(err) )
 
-        if (registerPasswordValidation(loginValue)) {
+        if (loginValue) {
             setLoginErr(null);
             console.log("Succesfully logged in test");
         } else {
@@ -38,8 +32,8 @@ const LoginPage = () => {
 
     return (
         <div className="Sticky_footer_Content_wrapper">
-            <h1>LoginPage</h1>
             <div className="ui middle aligned center aligned grid">
+
                 <div className="column">
 
                     <h2 className="ui teal image header">
@@ -78,7 +72,7 @@ const LoginPage = () => {
                         </div>
                     </form>
 
-                    <div className="error_backround">
+                    <div className="error_msg_backround">
                         <div className="">{loginErr}</div>
                     </div>
 
@@ -90,6 +84,7 @@ const LoginPage = () => {
                     </div>
 
                 </div>
+                
             </div>
         </div>
     );

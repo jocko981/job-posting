@@ -36,10 +36,40 @@ footer {
   padding: 1em;
 }
 
-/* fix edit semantic */
+/*   EDIT -  SEMANTIC-UI   */
+/* notes: (display: -webkit-box; je za Navbar menu, ugasi za mobile), () */
+
 .ui.segment {
   border-radius: 0;
 }
 .ui.menu {
   border-radius: 0;
+}
+/* auth files */
+.column {
+  max-width: 450px;
+}
+.ui.grid {
+  margin: 0;
+}
+.ui.header>.image:not(.icon), .ui.header>img {
+  width: 3em;
+}
+.ui.stacked.segment {
+  font-size: 1em;
+}
+.ui.stacked.segment::after {
+  content: none;
+}
+.ui.item.menu .item {
+  cursor: pointer;
+}
+
+.error_msg_backround {
+  color: tomato;
+  background: rgba(0,0,0,.03);
+  border: 1px solid rgba(34,36,38,.15);
+  border-radius: .28571429rem;
+  margin-top: -6px;
+  padding: 4px;
 }
