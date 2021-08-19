@@ -1,0 +1,60 @@
+
+/*   auth files   */
+.column {
+    max-width: 450px;
+}
+.ui.grid {
+    margin: 0;
+}
+.ui.stacked.segment {
+    font-size: 1em;
+    padding: 1em;
+}
+.ui.stacked.segment::after {
+    content: none;
+}
+
+/*   registration   */
+.ui.menu>.item:first-child {
+    border-radius: 0;
+}
+.ui.pointing.menu {
+    margin:  0;
+    margin-bottom: -1px;
+}
+.ui.item.pointing.menu .item {
+    cursor: pointer;
+}
+
+.error_msg_backround {
+    color: tomato;
+    background-color: rgba(0,0,0,.03);
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: .28571429rem;
+    margin-top: -6px;
+    padding: 4px;
+}
+  
+.skills_select_list {
+    margin: 1em 0 2em;
+}
+/* .skills_select_list .item {
+    float: left;
+    background-color: lightgoldenrodyellow;
+    background-color: rgb(69 78 92 / 20%);
+    border-radius: 3px;
+    border-bottom: 2px solid lightgray;
+    border-bottom: 2px solid rgb(69 78 92 / 20%);
+    padding: 6px 8px;
+    margin: 4px;
+    cursor: pointer;
+}
+.skills_select_list .item:hover{
+    border-bottom: 2px solid rgb(69 78 92 / 60%);
+  
+} */
+
+/*   Elements from 'react-select' library   */
+.dropdown.css-2b097c-container {
+    text-align: left;
+}

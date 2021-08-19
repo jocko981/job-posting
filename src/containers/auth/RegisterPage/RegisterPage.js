@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import "./RegisterPage.css";
 import axios from "axios";
-import UserRegistration from "./UserRegistration";
-import CompanyRegistration from "./CompanyRegistration.js";
+import UserRegistration from "./UserRegistration/UserRegistration";
+import CompanyRegistration from "./CompanyRegistration/CompanyRegistration";
 
 const RegisterPage = () => {
     const [selected, setSelected] = useState(true);

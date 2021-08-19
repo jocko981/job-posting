@@ -40,7 +40,7 @@ const Footer = () => {
                     </div>
 
                     {/* <div class="ui inverted divider"></div> */}
-                    <h4 className="ui horizontal inverted section divider">Job Posts</h4>
+                    <h4 className="ui horizontal inverted divider">Job Posts</h4> {/* this was className: 'section' devider */}
 
                     <div className="ui center aligned inverted container">
                         <div className="ui horizontal small divided link list">
@@ -48,7 +48,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="ui horizontal inverted section divider"></div>
+                    <div className="ui horizontal inverted section divider"> </div>
                 </div>
             </footer>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import SkillsDropdown from "./SkillsDropdown";
 
 const UserRegistration = () => {
     const [registerValue, setRegisterValue] = useState({ email: "", password: "", password_confirmation: "", skills: [] });
@@ -35,27 +35,6 @@ const UserRegistration = () => {
         }
     }
 
-    // Skillz - svaki skill element da ima{ display: inline-block; }
-    const skillz = [{ id: 1, name: 'Project Management' }, { id: 2, name: 'JavaScript' },
-    { id: 3, name: 'Php' }, { id: 4, name: 'Design' },
-    { id: 5, name: 'Quality Assurance' }, { id: 6, name: 'Manager' }, { id: 7, name: 'Testing' }]
-
-    const renderList = () => {
-        return (
-            <div className="skills_select_list">
-                {skillz.map((item, index) => {
-                    return (
-                        <div key={index} className="item">
-                            <div className="content">
-                                <div className="header">{item.name}</div>
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
-        );
-    }
-
     return (
         <>
             <form onSubmit={onLoginSubmit} className="ui large form">
@@ -65,7 +44,7 @@ const UserRegistration = () => {
                             <i className="user icon" />
                             <input
                                 required
-                                type="text"
+                                type="email"
                                 name="email"
                                 placeholder="E-mail address"
                                 onChange={handleChange}
@@ -99,15 +78,14 @@ const UserRegistration = () => {
                         </div>
                     </div>
 
-                    i ovde Skillz da izabere
-                        {renderList()}
+                    <SkillsDropdown />
 
                     <button className="ui fluid large teal submit button">Submit</button>
                 </div>
             </form>
 
             <div className="error_msg_backround">
-                <div className="">{registerErr}</div>
+                <div className="">err ako fejla POST ili sl.{registerErr}</div>
             </div>
 
         </>
