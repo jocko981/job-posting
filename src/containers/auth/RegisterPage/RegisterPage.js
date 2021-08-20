@@ -4,54 +4,59 @@ import axios from "axios";
 import UserRegistration from "./UserRegistration/UserRegistration";
 import CompanyRegistration from "./CompanyRegistration/CompanyRegistration";
 
-const RegisterPage = () => {
-    const [selected, setSelected] = useState(true);
-
-    const onClickUser = () => {
-        if (selected) {
+class RegisterPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: true}
+            ;
+      }
+    onClickUser = () => {
+        if (this.state.selected) {
             return null
-        } else setSelected(true);
+        } else this.setState({ selected: true });
     }
-    const onClickCompany = () => {
-        if (!selected) {
+    onClickCompany = () => {
+        if (!this.state.selected) {
             return null
-        } else setSelected(false);
+        } else this.setState({ selected: false });
     }
 
     // ovde ce ComponentDidMount{ fetchAllSkills ---> i prikazi react-select meni, 
     // ako nema fetch data, onda: Msg: Fetching skills... }
+    render() {
+        return (
+            <div className="Sticky_footer_Content_wrapper">
+                <div className="ui middle aligned center aligned grid">
 
-    return (
-        <div className="Sticky_footer_Content_wrapper">
-            <div className="ui middle aligned center aligned grid">
+                    <div className="column">
+                        <h2 className="ui teal image header">
+                            {/* <img src="" alt="logo.img" className="image" /> */}
+                            <div className="content">
+                                Register as:
+                            </div>
+                        </h2>
 
-                <div className="column">
-                    <h2 className="ui teal image header">
-                        {/* <img src="" alt="logo.img" className="image" /> */}
-                        <div className="content">
-                            Register as:
+                        <div className="ui two item pointing menu">
+                            <div onClick={this.onClickUser} className={`item ${this.state.selected && 'active'}`}>
+                                User
+                            </div>
+                            <div onClick={this.onClickCompany} className={`item ${!this.state.selected && 'active'}`}>
+                                Company
+                            </div>
                         </div>
-                    </h2>
 
-                    <div className="ui two item pointing menu">
-                        <div onClick={onClickUser} className={`item ${selected && 'active'}`}>
-                            User
-                        </div>
-                        <div onClick={onClickCompany} className={`item ${!selected && 'active'}`}>
-                            Company
+                        {this.state.selected ? <UserRegistration /> : <CompanyRegistration />}
+
+                        <div className="ui message">
+                            Go back to <a>Login</a>
                         </div>
                     </div>
 
-                    {selected ? <UserRegistration /> : <CompanyRegistration />}
-
-                    <div className="ui message">
-                        Go back to <a>Login</a>
-                    </div>
                 </div>
-
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default RegisterPage;
