@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./RegisterPage.css";
-import axios from "axios";
+import { connect } from "react-redux";
+import { fetchAllSkills } from "../../../actions";
+// components
 import UserRegistration from "./UserRegistration/UserRegistration";
 import CompanyRegistration from "./CompanyRegistration/CompanyRegistration";
 
@@ -10,7 +12,12 @@ class RegisterPage extends React.Component {
         this.state = {
             selected: true}
             ;
-      }
+    }
+
+    componentDidMount() {
+        this.props.fetchAllSkills();
+    }
+
     onClickUser = () => {
         if (this.state.selected) {
             return null
@@ -46,8 +53,7 @@ class RegisterPage extends React.Component {
                             </div>
                         </div>
 
-                        {this.state.selected ? <UserRegistration /> : <CompanyRegistration />}
-
+                        {this.state.selected ? <UserRegistration skills={this.props.skills.data} /> : <CompanyRegistration />}
                         <div className="ui message">
                             Go back to <a>Login</a>
                         </div>
@@ -59,4 +65,11 @@ class RegisterPage extends React.Component {
     }
 }
 
-export default RegisterPage;
+const mapStateToProps = (state) => {
+    // console.log(state, '[mapStateToProps]')
+    return { 
+        skills: state.skills
+    };
+};
+
+export default connect(mapStateToProps, { fetchAllSkills })(RegisterPage);

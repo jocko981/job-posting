@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from 'react-select';
 
-const SkillsDropdown = () => {
+const SkillsDropdown = ({ skills }) => {
     const [selectedSkills, setSelectedSkills] = useState([]);
     console.log(selectedSkills)
+    console.log(skills)
 
     // NOTE: data MUST have keyValues: 'label' and 'value'
     const skillz = [{ value: 1, label: 'Project Management' }, { value: 2, label: 'JavaScript' },
     { value: 3, label: 'Php' }, { value: 4, label: 'Design' },
     { value: 5, label: 'Quality Assurance' }, { value: 6, label: 'Manager' }, { value: 7, label: 'Testing' }]
+
+    useEffect(() => {
+        //  od skills props
+    },[])
     
     // handle onChange event of the dropdown
     const handleChangeSkills = (event) => {

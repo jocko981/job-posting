@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SkillsDropdown from "./SkillsDropdown";
 
-const UserRegistration = () => {
+const UserRegistration = ({ skills }) => {
     const [registerValue, setRegisterValue] = useState({ email: "", password: "", password_confirmation: "", skills: [] });
     const [registerErr, setRegisterErr] = useState(null);
 
@@ -78,7 +78,7 @@ const UserRegistration = () => {
                         </div>
                     </div>
 
-                    <SkillsDropdown />
+                    <SkillsDropdown skills={skills} />
 
                     <button className="ui fluid large teal submit button">Submit</button>
                 </div>
