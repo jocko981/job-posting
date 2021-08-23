@@ -10,8 +10,8 @@ class RegisterPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selected: true}
-            ;
+            selected: true
+        };
     }
 
     componentDidMount() {
@@ -21,12 +21,16 @@ class RegisterPage extends React.Component {
     onClickUser = () => {
         if (this.state.selected) {
             return null
-        } else this.setState({ selected: true });
+        } else {
+            this.setState({ selected: true })
+        };
     }
     onClickCompany = () => {
         if (!this.state.selected) {
             return null
-        } else this.setState({ selected: false });
+        } else {
+            this.setState({ selected: false })
+        };
     }
 
     // ovde ce ComponentDidMount{ fetchAllSkills ---> i prikazi react-select meni, 
@@ -53,7 +57,10 @@ class RegisterPage extends React.Component {
                             </div>
                         </div>
 
-                        {this.state.selected ? <UserRegistration skills={this.props.skills.data} /> : <CompanyRegistration />}
+                        {this.state.selected ? <UserRegistration skills={this.props.skills} /> : <CompanyRegistration />}
+                        {/* {console.log(this.props.skills, 'this.props.skills')} */}
+                        {console.log(Boolean([].length), 'testing arrays')}
+                        
                         <div className="ui message">
                             Go back to <a>Login</a>
                         </div>
@@ -66,9 +73,9 @@ class RegisterPage extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state, '[mapStateToProps]')
-    return { 
-        skills: state.skills
+    console.log(state, '[mapStateToProps]')
+    return {
+        skills: state.skills.data ? state.skills.data : []
     };
 };
 

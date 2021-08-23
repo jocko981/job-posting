@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import Select from 'react-select';
 
 const UserRegistration = ({ skills }) => {
+    let skillz = [];
+    if (skills.length > 0) {
+        skillz = skills.map(item => { return { value: item.id, label: item.name } })
+        console.log(skillz, 'skilZ')
+    }
     const [registerValues, setRegisterValues] = useState({ email: "", password: "", password_confirmation: "" });
     const [selectedSkills, setSelectedSkills] = useState([]);
     // for User POST req we need - { ...registerValues, skills: selectedSkills }
-    const [registerErr, setRegisterErr] = useState(null);
+    const [registerErr, setRegisterErr] = useState(null); // 'You need to possess at least one skill
 
     console.log(selectedSkills, 'selectedSkills')
-    console.log({...registerValues, skills: selectedSkills }, 'selectedSkills and Register values')
+    // console.log({...registerValues, skills: selectedSkills }, 'selectedSkills and Register values')
 
     const registerPasswordValidation = (registerPassword) => {
         return registerPassword.match(/^(?=.*\d).{8,}$/)
@@ -26,11 +31,8 @@ const UserRegistration = ({ skills }) => {
         });
     }
 
-    // NOTE: data MUST have keyValues: 'label' and 'value'
-    const skillz = [{ value: 1, label: 'Project Management' }, { value: 2, label: 'JavaScript' },
-    { value: 3, label: 'Php' }, { value: 4, label: 'Design' },
-    { value: 5, label: 'Quality Assurance' }, { value: 6, label: 'Manager' }, { value: 7, label: 'Testing' }]
 
+    // NOTE: data MUST have keyValues: 'label' and 'value'
     // handle onChange event of the dropdown
     const handleChangeSkills = (event) => {
         setSelectedSkills(Array.isArray(event) ? event.map(x => x.value) : []);
