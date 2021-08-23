@@ -1,19 +1,18 @@
 import React, { useState } from "react";
-import axios from "axios";
 
 const CompanyRegistration = () => {
-    const [registerValue, setRegisterValue] = useState({ email: "", password: "", password_confirmation: "" });
+    const [registerValues, setRegisterValues] = useState({ email: "", password: "", password_confirmation: "" });
     const [registerErr, setRegisterErr] = useState(null);
 
     const registerPasswordValidation = (loginVal) => {
-        return registerValue.password.match(/^(?=.*\d).{8,}$/)
+        return registerValues.password.match(/^(?=.*\d).{8,}$/)
         // A be ovo treba za Registration! samo da ima min 8 chars
     }
 
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        setRegisterValue((prevValue) => {
+        setRegisterValues((prevValue) => {
             return {
                 ...prevValue,
                 [name]: value
@@ -27,7 +26,7 @@ const CompanyRegistration = () => {
         // .then( res => console.log(res) )
         // .catch( err => console.log(err) )
 
-        if (registerPasswordValidation(registerValue)) {
+        if (registerPasswordValidation(registerValues)) {
             setRegisterErr(null);
             console.log("Succesfully logged in test");
         } else {

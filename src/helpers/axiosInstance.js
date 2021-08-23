@@ -38,7 +38,7 @@ axios.interceptors.response.use(
     return response;
   },
   (err) => {
-    if(err.response.status == undefined) {
+    if(err.response.status === undefined) {
       console.log("Server is not online...");
     } else if(err.response.status === 403) {
       localStorage.removeItem("token");

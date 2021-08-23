@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import SkillsDropdown from "./SkillsDropdown";
+import Select from 'react-select';
 
 const UserRegistration = ({ skills }) => {
-    const [registerValue, setRegisterValue] = useState({ email: "", password: "", password_confirmation: "", skills: [] });
+    const [registerValues, setRegisterValues] = useState({ email: "", password: "", password_confirmation: "" });
+    const [selectedSkills, setSelectedSkills] = useState([]);
+    // for User POST req we need - { ...registerValues, skills: selectedSkills }
     const [registerErr, setRegisterErr] = useState(null);
+
+    console.log(selectedSkills, 'selectedSkills')
+    console.log({...registerValues, skills: selectedSkills }, 'selectedSkills and Register values')
 
     const registerPasswordValidation = (registerPassword) => {
         return registerPassword.match(/^(?=.*\d).{8,}$/)
@@ -13,13 +18,24 @@ const UserRegistration = ({ skills }) => {
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        setRegisterValue((prevValue) => {
+        setRegisterValues((prevValue) => {
             return {
                 ...prevValue,
                 [name]: value
             };
         });
     }
+
+    // NOTE: data MUST have keyValues: 'label' and 'value'
+    const skillz = [{ value: 1, label: 'Project Management' }, { value: 2, label: 'JavaScript' },
+    { value: 3, label: 'Php' }, { value: 4, label: 'Design' },
+    { value: 5, label: 'Quality Assurance' }, { value: 6, label: 'Manager' }, { value: 7, label: 'Testing' }]
+
+    // handle onChange event of the dropdown
+    const handleChangeSkills = (event) => {
+        setSelectedSkills(Array.isArray(event) ? event.map(x => x.value) : []);
+    }
+
     const onLoginSubmit = (e) => {
         e.preventDefault();
 
@@ -27,7 +43,7 @@ const UserRegistration = ({ skills }) => {
         // .then( res => console.log(res) )
         // .catch( err => console.log(err) )
 
-        if (registerPasswordValidation(registerValue.password)) {
+        if (registerPasswordValidation(registerValues.password)) {
             setRegisterErr(null);
             console.log("Succesfully logged in test");
         } else {
@@ -78,7 +94,21 @@ const UserRegistration = ({ skills }) => {
                         </div>
                     </div>
 
-                    <SkillsDropdown skills={skills} />
+                    <div className="skills_select_list">
+                        {/* <div className="ui divider"></div> */}
+                        <h4>Select your skills:</h4>
+                        <Select
+                            className="dropdown"
+                            placeholder="Your skills..."
+                            value={skillz.filter(obj => selectedSkills.includes(obj.value))} // set selected values
+                            options={skillz} // set list of the data
+                            onChange={handleChangeSkills} // assign onChange function
+                            isMulti
+                            isClearable
+                            isSearchable
+                            closeMenuOnSelect={false}
+                        />
+                    </div>
 
                     <button className="ui fluid large teal submit button">Submit</button>
                 </div>
