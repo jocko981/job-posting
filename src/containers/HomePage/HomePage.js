@@ -64,15 +64,17 @@ class HomePage extends React.Component {
                     <div className="item active">All Jobs</div>
                     <div className="item">Expired Job posts</div>
                 </div>
+
+                {console.log(this.props.allJobPosts)}
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.allJobPosts.data ? state.allJobPosts.data : [], '[mapStateToProps]')
+    // console.log(state.allJobPosts.data ? state.allJobPosts.data.data : [], '[mapStateToProps]')
     return {
-        allJobPosts: state.allJobPosts // state.skills.data ? state.skills.data : []
+        allJobPosts: state.allJobPosts.data ? state.allJobPosts.data.data : []
     };
 };
 
