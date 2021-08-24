@@ -26,8 +26,16 @@ const UserRegistration = ({ skills }) => {
     // NOTE: data for react-select MUST have keyValues: 'label' and 'value'
     let skillz = [];
     if (skills.length > 0) {
-        skillz = skills.map(item => { 
-            return { value: item.id, label: item.name } 
+        skillz = skills.map(item => {
+            return { value: item.id, label: item.name }
+        });
+    } else {
+        const skillzRezerva = [{ id: 1, name: 'php' }, { id: 2, name: 'laravel' },
+        { id: 3, name: 'javascript' }, { id: 4, name: 'java' },
+        { id: 5, name: 'nodejs' }, { id: 6, name: 'python' }]
+        
+        skillz = skillzRezerva.map(item => {
+            return { value: item.id, label: item.name }
         });
     }
     // handle onChange event of the dropdown
@@ -37,10 +45,10 @@ const UserRegistration = ({ skills }) => {
 
     const onLoginSubmit = (e) => {
         e.preventDefault();
-        // for User POST req we need - { ...registerValues, skills: selectedSkills }
         if (selectedSkills.length < 1) {
             setRegisterErr("You need to possess at least one skill")
         } else if (registerPasswordValidation(registerValues.password)) {
+            // for User POST req we need - { ...registerValues, skills: selectedSkills }
             userRegistration({ ...registerValues, skills: selectedSkills });
             setRegisterErr(null);
         } else {
@@ -92,7 +100,7 @@ const UserRegistration = ({ skills }) => {
                             />
                         </div>
                     </div>
-                    
+
                     <div className="field">
                         <div className="ui left icon input">
                             <i className="lock icon" />

@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { accountLogin } from "../../../helpers/auth";
 
 const LoginPage = () => {
-    const [loginValue, setLoginValue] = useState({ email: "", password: "" });
+    const [loginValues, setLoginValues] = useState({ email: "", password: "" });
     const [loginErr, setLoginErr] = useState(null);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        setLoginValue((prevValue) => {
+        setLoginValues((prevValue) => {
             return {
                 ...prevValue,
                 [name]: value
@@ -19,13 +19,9 @@ const LoginPage = () => {
     const onLoginSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('/auth/login', loginValue)
-        .then( res => console.log(res) )
-        .catch( err => console.log(err) )
-
-        if (loginValue) {
+        if (loginValues) {
+            accountLogin(loginValues);
             setLoginErr(null);
-            console.log("Succesfully logged in test");
         } else {
             setLoginErr("Kao neki Err ako je Password < 8 chars")
         }

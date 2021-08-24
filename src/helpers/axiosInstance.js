@@ -1,5 +1,7 @@
 import axios from 'axios';
 import history from "../history";
+import LocalStorageService from "../helpers/LocalStorageService";
+const localStorageService = LocalStorageService.getService();
 
 // axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
 
@@ -13,10 +15,10 @@ axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
 // For GET requests
 axios.interceptors.request.use(
   async (request) => {
-    // Add configurations here
-    // const keys = JSON.parse('123  ')  // ovde ubaci TOKEN 
-    const token = localStorage.getItem('access_token');
+    // Add request configurations here
+    const token = localStorageService.getAccessToken();
     request.headers['Content-Type'] = 'application/json';
+    request.headers['Access-Control-Allow-Origin'] = "*";
 
     if (token) {
       request.headers.Authorization = `Bearer ${token}`;
@@ -43,7 +45,9 @@ axios.interceptors.response.use(
     if(err.response.status === undefined) {
       console.log("Server is not online...");
     } else if(err.response.status === 403) {
+
       localStorage.removeItem("token");
+
       history.push("/");
     } else if(err.response.status === 404) {
       history.push("/");
