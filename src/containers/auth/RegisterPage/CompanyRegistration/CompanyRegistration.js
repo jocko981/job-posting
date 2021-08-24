@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import { companyRegistration } from "../../../../helpers/auth";
 
 const CompanyRegistration = () => {
-    const [registerValues, setRegisterValues] = useState({ email: "", password: "", password_confirmation: "" });
+    const [registerValues, setRegisterValues] = useState({ name: "", email: "", password: "", password_confirmation: "" });
     const [registerErr, setRegisterErr] = useState(null);
 
-    const registerPasswordValidation = (loginVal) => {
-        return registerValues.password.match(/^(?=.*\d).{8,}$/)
+    const registerPasswordValidation = (registerPassword) => {
+        return registerPassword.match(/^(?=.*\d).{8,}$/)
         // A be ovo treba za Registration! samo da ima min 8 chars
     }
 
-    const handleChange = (event) => {
+    const handleChangeInputs = (event) => {
         const { name, value } = event.target;
 
         setRegisterValues((prevValue) => {
@@ -19,38 +20,50 @@ const CompanyRegistration = () => {
             };
         });
     }
+
     const onLoginSubmit = (e) => {
         e.preventDefault();
 
-        // axios.post('/auth/login', loginValue)
-        // .then( res => console.log(res) )
-        // .catch( err => console.log(err) )
-
-        if (registerPasswordValidation(registerValues)) {
+        if (registerPasswordValidation(registerValues.password)) {
+            companyRegistration(registerValues); // post request function
             setRegisterErr(null);
-            console.log("Succesfully logged in test");
         } else {
-            setRegisterErr("Kao neki Err ako je Password < 8 chars")
+            setRegisterErr("Check if you typed everything well, password must be 8 chars")
         }
     }
 
     return (
         <>
-
             <form onSubmit={onLoginSubmit} className="ui large form">
                 <div className="ui stacked segment">
+
                     <div className="field">
                         <div className="ui left icon input">
                             <i className="user icon" />
                             <input
                                 required
                                 type="text"
-                                name="email"
-                                placeholder="E-mail address"
-                                onChange={handleChange}
+                                name="name"
+                                placeholder="Company Name"
+                                onChange={handleChangeInputs}
+                                maxLength="199"
                             />
                         </div>
                     </div>
+
+                    <div className="field">
+                        <div className="ui left icon input">
+                            <i className="envelope icon" />
+                            <input
+                                required
+                                type="email"
+                                name="email"
+                                placeholder="E-mail address"
+                                onChange={handleChangeInputs}
+                            />
+                        </div>
+                    </div>
+
                     <div className="field">
                         <div className="ui left icon input">
                             <i className="lock icon" />
@@ -59,11 +72,12 @@ const CompanyRegistration = () => {
                                 type="password"
                                 name="password"
                                 placeholder="Password"
-                                onChange={handleChange}
+                                onChange={handleChangeInputs}
                                 maxLength="199"
                             />
                         </div>
                     </div>
+
                     <div className="field">
                         <div className="ui left icon input">
                             <i className="lock icon" />
@@ -72,11 +86,12 @@ const CompanyRegistration = () => {
                                 type="password"
                                 name="password_confirmation"
                                 placeholder="Confirm Password"
-                                onChange={handleChange}
+                                onChange={handleChangeInputs}
                                 maxLength="199"
                             />
                         </div>
                     </div>
+                    
                     <button className="ui fluid large teal submit button">Submit</button>
                 </div>
             </form>

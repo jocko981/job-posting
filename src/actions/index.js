@@ -14,3 +14,11 @@ export const fetchAllSkills = () => async (dispatch) => {
     dispatch({ type: FETCH_ALL_SKILLS, payload: response.data });
     // console.log(response.data, '[fetch_ALL_SKILLS action]');
 };
+
+// // job posts (ads)
+// export const fetchAllJobPosts = () => async (dispatch) => {
+//     const response = await axios.get(API_URLS.FETCH_ALL_SKILLS);
+
+//     dispatch({ type: FETCH_ALL_SKILLS, payload: response.data });
+//     // console.log(response.data, '[fetch_ALL_SKILLS action]');
+// };

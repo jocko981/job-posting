@@ -2,22 +2,24 @@ import axios from 'axios';
 import history from "../history";
 
 // axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
-// axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 //              THESE are GLOBAL Interceptors !!!! !!!!  
 // Here we use Global config for axios. Down bellow is example how to make instance instead of confoguring global instance
 
 // set baseURL
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
+// axios.defaults.headers.common['X-CSRF-TOKEN'] = token_var;
 
 // For GET requests
 axios.interceptors.request.use(
   async (request) => {
     // Add configurations here
-    const keys = JSON.parse('123  ')  // ovde ubaci TOKEN 
+    // const keys = JSON.parse('123  ')  // ovde ubaci TOKEN 
+    const token = localStorage.getItem('access_token');
+    request.headers['Content-Type'] = 'application/json';
 
-    if (localStorage.token) {
-      request.headers.Authorization = `Bearer ${localStorage.token}`;
+    if (token) {
+      request.headers.Authorization = `Bearer ${token}`;
     }
 
     return request;

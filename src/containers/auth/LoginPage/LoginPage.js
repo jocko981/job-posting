@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const LoginPage = () => {
@@ -77,7 +78,7 @@ const LoginPage = () => {
                     </div>
 
                     <div className="ui message">
-                        New to us? <a>Sign Up</a>
+                        New to us? <Link to="/register" >Sign Up</Link>
                     </div>
                     <div className="ui message">
                         Forgot password? <a>Click here</a>

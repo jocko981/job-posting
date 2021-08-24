@@ -1,26 +1,18 @@
 import React, { useState } from "react";
 import Select from 'react-select';
+import { userRegistration } from "../../../../helpers/auth";
 
 const UserRegistration = ({ skills }) => {
-    let skillz = [];
-    if (skills.length > 0) {
-        skillz = skills.map(item => { return { value: item.id, label: item.name } })
-        console.log(skillz, 'skilZ')
-    }
-    const [registerValues, setRegisterValues] = useState({ email: "", password: "", password_confirmation: "" });
+    const [registerValues, setRegisterValues] = useState({ name: "", email: "", password: "", password_confirmation: "" });
     const [selectedSkills, setSelectedSkills] = useState([]);
-    // for User POST req we need - { ...registerValues, skills: selectedSkills }
-    const [registerErr, setRegisterErr] = useState(null); // 'You need to possess at least one skill
-
-    console.log(selectedSkills, 'selectedSkills')
-    // console.log({...registerValues, skills: selectedSkills }, 'selectedSkills and Register values')
+    const [registerErr, setRegisterErr] = useState(null);
 
     const registerPasswordValidation = (registerPassword) => {
         return registerPassword.match(/^(?=.*\d).{8,}$/)
         // A be ovo treba za Registration! samo da ima min 8 chars
     }
 
-    const handleChange = (event) => {
+    const handleChangeInputs = (event) => {
         const { name, value } = event.target;
 
         setRegisterValues((prevValue) => {
@@ -31,8 +23,13 @@ const UserRegistration = ({ skills }) => {
         });
     }
 
-
-    // NOTE: data MUST have keyValues: 'label' and 'value'
+    // NOTE: data for react-select MUST have keyValues: 'label' and 'value'
+    let skillz = [];
+    if (skills.length > 0) {
+        skillz = skills.map(item => { 
+            return { value: item.id, label: item.name } 
+        });
+    }
     // handle onChange event of the dropdown
     const handleChangeSkills = (event) => {
         setSelectedSkills(Array.isArray(event) ? event.map(x => x.value) : []);
@@ -40,16 +37,14 @@ const UserRegistration = ({ skills }) => {
 
     const onLoginSubmit = (e) => {
         e.preventDefault();
-
-        // axios.post('/auth/login', loginValue)
-        // .then( res => console.log(res) )
-        // .catch( err => console.log(err) )
-
-        if (registerPasswordValidation(registerValues.password)) {
+        // for User POST req we need - { ...registerValues, skills: selectedSkills }
+        if (selectedSkills.length < 1) {
+            setRegisterErr("You need to possess at least one skill")
+        } else if (registerPasswordValidation(registerValues.password)) {
+            userRegistration({ ...registerValues, skills: selectedSkills });
             setRegisterErr(null);
-            console.log("Succesfully logged in test");
         } else {
-            setRegisterErr("Kao neki Err ako je Password < 8 chars")
+            setRegisterErr("Check if you typed everything well, password must be 8 chars")
         }
     }
 
@@ -57,18 +52,33 @@ const UserRegistration = ({ skills }) => {
         <>
             <form onSubmit={onLoginSubmit} className="ui large form">
                 <div className="ui stacked segment">
+
                     <div className="field">
                         <div className="ui left icon input">
                             <i className="user icon" />
                             <input
                                 required
-                                type="email"
-                                name="email"
-                                placeholder="E-mail address"
-                                onChange={handleChange}
+                                type="text"
+                                name="name"
+                                placeholder="Your name"
+                                onChange={handleChangeInputs}
                             />
                         </div>
                     </div>
+
+                    <div className="field">
+                        <div className="ui left icon input">
+                            <i className="envelope icon" />
+                            <input
+                                required
+                                type="email"
+                                name="email"
+                                placeholder="E-mail address"
+                                onChange={handleChangeInputs}
+                            />
+                        </div>
+                    </div>
+
                     <div className="field">
                         <div className="ui left icon input">
                             <i className="lock icon" />
@@ -77,11 +87,12 @@ const UserRegistration = ({ skills }) => {
                                 type="password"
                                 name="password"
                                 placeholder="Password"
-                                onChange={handleChange}
+                                onChange={handleChangeInputs}
                                 maxLength="199"
                             />
                         </div>
                     </div>
+                    
                     <div className="field">
                         <div className="ui left icon input">
                             <i className="lock icon" />
@@ -90,7 +101,7 @@ const UserRegistration = ({ skills }) => {
                                 type="password"
                                 name="password_confirmation"
                                 placeholder="Confirm Password"
-                                onChange={handleChange}
+                                onChange={handleChangeInputs}
                                 maxLength="199"
                             />
                         </div>
@@ -117,7 +128,7 @@ const UserRegistration = ({ skills }) => {
             </form>
 
             <div className="error_msg_backround">
-                <div className="">err ako fejla POST ili sl.{registerErr}</div>
+                <div className="">{registerErr}</div>
             </div>
 
         </>

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "./RegisterPage.css";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchAllSkills } from "../../../actions";
 // components
@@ -58,11 +59,9 @@ class RegisterPage extends React.Component {
                         </div>
 
                         {this.state.selected ? <UserRegistration skills={this.props.skills} /> : <CompanyRegistration />}
-                        {/* {console.log(this.props.skills, 'this.props.skills')} */}
-                        {console.log(Boolean([].length), 'testing arrays')}
                         
                         <div className="ui message">
-                            Go back to <a>Login</a>
+                            Go back to <Link to="/login">Login</Link>
                         </div>
                     </div>
 
@@ -73,7 +72,7 @@ class RegisterPage extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state, '[mapStateToProps]')
+    // console.log(state, '[mapStateToProps]')
     return {
         skills: state.skills.data ? state.skills.data : []
     };
