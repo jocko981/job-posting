@@ -27,7 +27,7 @@ const AllJobPosts = ({ allJobPosts }) => {
                             <i className="large middle aligned icon bullhorn" />
 
                             <div className="content">
-                                <Link to={`/admin/games/${post.id}`} className="header">{post.title}</Link>
+                                <Link to={`/ads/${post.id}`} className="header">{post.title}</Link>
                                 <div className="description">
                                     Description: {post.description}
                                 </div>

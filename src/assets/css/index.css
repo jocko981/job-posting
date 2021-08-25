@@ -33,6 +33,7 @@ footer {
 }
 .Sticky_footer_Content_wrapper {
   flex: 1;
+  padding: 0 1em;
 }
 
 /*   EDIT -  SEMANTIC-UI   */
