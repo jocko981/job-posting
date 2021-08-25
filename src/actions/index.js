@@ -28,5 +28,9 @@ export const fetchAllJobPosts = () => async (dispatch) => {
 export const fetchSelectedJobPost = (id) => async (dispatch) => {
     const response = await axios.get(API_URLS.FETCH_SELECTED_JOB_POST + id);
 
+    // if (response.data.status === 404) {
+    //     alert('This job post does not exist...')
+    // }
+
     dispatch({ type: FETCH_SELECTED_JOB_POST, payload: response.data });
 };

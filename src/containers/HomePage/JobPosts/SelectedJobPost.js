@@ -26,10 +26,10 @@ class HomePage extends React.Component {
             return (
                 <div>
                     <h1 className="ui header teal center aligned">{title}</h1>
-                    <p>description: {description}</p>
-                    <p>skills: {skills > 0 ? skills.map(skill => skill) : "No skills required."}</p>
-                    <p>start_date: {start_date}</p>
-                    <p>end_date: {end_date}</p>
+                    <p><b>description:</b> {description}</p>
+                    <p><b>skills:</b> {skills.length > 0 ? skills.map(skill => { return <span> {skill} </span> }) : "No skills required."}</p>
+                    <p><b>start_date:</b> {start_date}</p>
+                    <p><b>end_date:</b> {end_date}</p>
                 </div>
             );
         }
@@ -45,7 +45,7 @@ class HomePage extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state.allJobPosts.data ? state.allJobPosts.data : [], '[mapStateToProps]')
+    // console.log(state.allJobPosts ? state.allJobPosts : [], '[mapStateToProps]')
     return {
         selectedJobPost: state.allJobPosts.data ? state.allJobPosts.data : []
     };

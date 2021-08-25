@@ -15,6 +15,8 @@ function err123() {
   return <h2>Err page</h2>;
 }
 
+// guarded rute - ako nije logovan Comapany --> return null; umesto <Route component={newJobPost} />
+
 const App = () => {
   return (
     <div className="App">
