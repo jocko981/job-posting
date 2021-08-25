@@ -1,8 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchAllJobPosts } from "../../actions";
-import axios from "axios";
 //
 import AllJobPosts from "./JobPosts/AllJobPosts";
 
@@ -16,10 +14,6 @@ class HomePage extends React.Component {
 
     componentDidMount() {
         this.props.fetchAllJobPosts();
-
-        axios.get("/stats/skills").then(res =>
-            console.log(res)
-        ).catch(err => console.log(err))
     }
 
     render() {
@@ -32,7 +26,7 @@ class HomePage extends React.Component {
                     <div className="item">Expired Job posts</div>
                 </div>
 
-                <AllJobPosts allJobPosts={this.props.allJobPosts} />
+                <AllJobPosts allJobPosts={this.props.allJobPosts.data} />
 
             </div>
         );
@@ -42,7 +36,7 @@ class HomePage extends React.Component {
 const mapStateToProps = (state) => {
     // console.log(state.allJobPosts.data ? state.allJobPosts.data.data : [], '[mapStateToProps]')
     return {
-        allJobPosts: state.allJobPosts.data ? state.allJobPosts.data.data : []
+        allJobPosts: state.allJobPosts.data ? state.allJobPosts.data : []
     };
 };
 

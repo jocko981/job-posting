@@ -16,9 +16,14 @@ const AllJobPosts = ({ allJobPosts }) => {
     //     );
     // }
 
-    return (
-        <div className="ui celled list">
-                {allJobPosts.map(post => {
+    const renderAllJobPosts = () => {
+        if (!allJobPosts) {
+            return (
+                <h1 className="ui header teal center aligned">Loading...</h1>
+            );
+        } else {
+            return (
+                allJobPosts.map(post => {
                     return (
                         <div className="item" key={post.id}>
 
@@ -40,8 +45,16 @@ const AllJobPosts = ({ allJobPosts }) => {
                             </div>
                         </div>
                     );
-                })}
-            </div>
+                })
+            );
+        }
+    }
+
+
+    return (
+        <div className="ui celled list">
+            {renderAllJobPosts()}
+        </div>
     );
 }
 
