@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchAllJobPosts } from "../../actions";
-import axios from "axios";
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -14,9 +13,6 @@ class HomePage extends React.Component {
 
     componentDidMount() {
         this.props.fetchAllJobPosts();
-        // axios.get("/ads").then(res =>
-        //     console.log(res)
-        // ).catch(err => console.log(err))
     }
 
     // renderAdminEdit(game) {
@@ -33,39 +29,44 @@ class HomePage extends React.Component {
     // }
 
     renderAllJobPosts() {
-        return this.props.allJobPosts.map((post, index) => {
-            return (
-                <div className="item" key={post.id}>
+        return (
+            <div className="ui celled list">
+                {this.props.allJobPosts.map(post => {
+                    return (
+                        <div className="item" key={post.id}>
 
-                    {this.renderAdminEdit(post)}
+                            {/* {this.renderAdminEdit(post)} */}
 
-                    <i className="large middle aligned icon gamepad" />
+                            <i className="large middle aligned icon bullhorn" />
 
-                    <div className="content">
-                        <Link to={`/admin/games/${post.id}`} className="header">{post.title}</Link>
-                        <div className="description">
-                            Description: {post.description}
+                            <div className="content">
+                                <Link to={`/admin/games/${post.id}`} className="header">{post.title}</Link>
+                                <div className="description">
+                                    Description: {post.description}
+                                </div>
+                                <div className="description">
+                                    Skills: {post.skills}
+                                </div>
+                            </div>
                         </div>
-                        <div className="description">
-                            Skills: {post.skills}
-                        </div>
-                    </div>
-                    
-                </div>
-            );
-        })
+                    );
+                })}
+            </div>
+        );
     }
 
     render() {
         return (
             <div className="Sticky_footer_Content_wrapper">
+
                 <h1 className="ui header teal center aligned">Home Page</h1>
                 <div className="ui fluid two item menu">
                     <div className="item active">All Jobs</div>
                     <div className="item">Expired Job posts</div>
                 </div>
 
-                {console.log(this.props.allJobPosts)}
+                {this.renderAllJobPosts()}
+
             </div>
         );
     }
