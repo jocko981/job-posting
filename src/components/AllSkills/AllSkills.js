@@ -15,29 +15,41 @@ class AllSkills extends React.Component {
     }
 
     renderAllSkills() {
-        return (
-            <div className="ui celled list">
-                {this.props.skills.map((skill) => {
-                    return (
-                        <div className="item" key={skill.id}>
+        if (!this.props.skills.data) {
+            return (
+                <div>
+                    <h1 className="ui header teal center aligned">Loading...</h1>
+                    {console.log('h1 se render')}
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                    <h1 className="ui header teal center aligned">All skills</h1>
 
-                            <i className="large middle aligned icon thumbtack" />
+                    <div className="ui celled list">
+                        {this.props.skills.data.map((skill) => {
+                            return (
+                                <div className="item" key={skill.id}>
 
-                            <div className="content">
-                                {skill.name}
-                            </div>
+                                    <i className="large middle aligned icon thumbtack" />
 
-                        </div>
-                    );
-                })}
-            </div>
-        );
+                                    <div className="content">
+                                        {skill.name}
+                                    </div>
+
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            );
+        }
     }
 
     render() {
         return (
             <div className="Sticky_footer_Content_wrapper">
-                <h1>All skills</h1>
                 {this.renderAllSkills()}
             </div>
         );
@@ -45,9 +57,9 @@ class AllSkills extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state, '[mapStateToProps]')
+    // console.log(state.skills, '[mapStateToProps]')
     return {
-        skills: state.skills.data ? state.skills.data : []
+        skills: state.skills ? state.skills : []
     };
 };
 

@@ -6,8 +6,7 @@ const Navbar = () => {
     const dropdownAdmin = () => {
         return (
             <div className="ui simple dropdown item" tabIndex="0">
-                Dropdown
-                <i className="dropdown icon" />
+                Dropdown <i className="dropdown icon" />
 
                 <div className="menu" tabIndex="-1">
                     <div className="ui teal header">Navigate:</div>
