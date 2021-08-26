@@ -1,0 +1,7 @@
+.ui.menu .dropdown.item .menu .item{
+    color: black;
+}
+.ui.menu .dropdown.item .menu .item:hover{
+    background-color: lightseagreen !important;
+    /* ove boje je i <h1> */
+}

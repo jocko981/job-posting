@@ -1,25 +1,46 @@
 import React from "react";
+import "./Navbar.css";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+    const dropdownAdmin = () => {
+        return (
+            <div className="ui simple dropdown item" tabIndex="0">
+                Dropdown
+                <i className="dropdown icon" />
+
+                <div className="menu" tabIndex="-1">
+                    <div className="ui teal header">Navigate:</div>
+                    <Link to="/skills"><div className="item">Skills</div></Link>
+                    <Link to="/skills"><div className="item">--- Another Action</div></Link>
+
+                    <div className="divider"></div>
+
+                    <div className="ui teal header">My special options:</div>
+                    <Link to="/"><div className="item">Create New Post</div></Link>
+                    <Link to="/"><div className="item">Our Job Posts</div></Link>
+                </div>
+            </div>
+        );
+    }
+
+    const dropdownUser = () => {
+        return (
+            '123 Ovde Users Dropdown'
+        );
+    }
+
     return (
         <div className="Navbar_div">
             <div className="ui inverted menu">
-                <div className="header item">Brand</div>
-                <Link to="/" className="active item">Home</Link>
-                <div className="ui dropdown item" tabIndex="0">
-                    Dropdown
-                    <i className="dropdown icon" />
-                    <div className="menu transition hidden" tabIndex="-1">
-                        <div className="item">Action</div>
-                        <div className="item">Another Action</div>
-                        <div className="item">Something else here</div>
-                        <div className="divider"></div>
-                        <div className="item">Separated Link</div>
-                        <div className="divider"></div>
-                        <div className="item">One more separated link</div>
-                    </div>
-                </div>
+
+                {/* <div className="header item"><i class="bordered inverted teal users icon"></i></div> */}
+
+                <Link to="/" className="item"><i className="large teal caret square left outline icon" />Home</Link>
+
+                <div className="item">---</div>
+
+                {dropdownAdmin()}
 
                 <div className="right menu">
                     <div className="item">
@@ -34,6 +55,7 @@ const Navbar = () => {
                         <Link to="/login"><button className="ui inverted blue button">Za Login/Logout</button></Link>
                     </div>
                 </div>
+
             </div>
         </div>
     );

@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
 import { fetchAllJobPosts } from "../../actions";
@@ -14,6 +15,10 @@ class HomePage extends React.Component {
 
     componentDidMount() {
         this.props.fetchAllJobPosts();
+
+        axios.get('/auth/user-profile')
+        .then( res => console.log(res, '/auth/user-profile') )
+        .catch(err => console.log(err, '/auth/user-profile'))
     }
 
     render() {
