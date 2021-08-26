@@ -22,31 +22,45 @@ const AllJobPosts = ({ allJobPosts }) => {
                 <h1 className="ui header teal center aligned">Loading...</h1>
             );
         } else {
-            return (
-                allJobPosts.map(post => {
-                    return (
-                        <div className="item" key={post.id}>
 
-                            {/* {this.renderAdminEdit(post)} */}
+            if (!allJobPosts.data.length) {
+                return (
+                    <div>
+                        <h4>There are currently no active Job posts.</h4>
 
-                            <i className="large middle aligned icon bullhorn" />
+                        <i className="huge meh outline icon" />
+                        
+                        <h4>Take a look another day...</h4>
+                    </div>
+                );
+            } else {
+                return (
+                    allJobPosts.data.map(post => {
+                        return (
+                            <div className="item" key={post.id}>
 
-                            <div className="content">
-                                <Link to={`/ads/${post.id}`} className="header">{post.title}</Link>
-                                <div className="description">
-                                    Description: {post.description}
-                                </div>
-                                <div className="description">
-                                    Skills: {post.skills}
-                                </div>
-                                <div className="description">
-                                    Date: {post.skills}
+                                {/* {this.renderAdminEdit(post)} */}
+
+                                <i className="large middle aligned icon bullhorn" />
+
+                                <div className="content">
+                                    <Link to={`/ads/${post.id}`} className="header">{post.title}</Link>
+                                    <div className="description">
+                                        Description: {post.description}
+                                    </div>
+                                    <div className="description">
+                                        Skills: {post.skills}
+                                    </div>
+                                    <div className="description">
+                                        Date: {post.skills}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    );
-                })
-            );
+                        );
+                    })
+                );
+            }
+
         }
     }
 

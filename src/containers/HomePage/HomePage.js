@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
 import { fetchAllJobPosts } from "../../actions";
@@ -16,9 +15,9 @@ class HomePage extends React.Component {
     componentDidMount() {
         this.props.fetchAllJobPosts();
 
-        axios.get('/auth/user-profile')
-        .then( res => console.log(res, '/auth/user-profile') )
-        .catch(err => console.log(err, '/auth/user-profile'))
+        // axios.get('/auth/user-profile')
+        // .then( res => console.log(res, '/auth/user-profile') )
+        // .catch(err => console.log(err, '/auth/user-profile'))
     }
 
     render() {
@@ -26,6 +25,7 @@ class HomePage extends React.Component {
             <div className="Sticky_footer_Content_wrapper">
 
                 <h1 className="ui header teal center aligned">Home Page</h1>
+                
                 <div className="ui fluid two item menu">
                     <div className="item active">All Jobs</div>
                     <div className="item">Expired Job posts</div>
@@ -33,15 +33,17 @@ class HomePage extends React.Component {
 
                 <AllJobPosts allJobPosts={this.props.allJobPosts.data} />
 
+                { console.log(this.props.allJobPosts.data, '[123]') }
+
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state.allJobPosts.data ? state.allJobPosts.data.data : [], '[mapStateToProps]')
+    // console.log(state, '[mapStateToProps]')
     return {
-        allJobPosts: state.allJobPosts.data ? state.allJobPosts.data : []
+        allJobPosts: state.jobPosts.allJobPosts ? state.jobPosts.allJobPosts : []
     };
 };
 
