@@ -1,14 +1,24 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createJobPost } from "../../../../actions";
+import { fetchAllSkills, createJobPost } from "../../../../actions";
 import JobForm from "./JobForm";
 
-class GameCreateForm extends Component {
+class JobCreateForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            // selected: true
+        };
+    }
+    
+    componentDidMount() {
+        this.props.fetchAllSkills();
+    }
 
     onSubmit = (formValues) => {
         // this.props.createJobPost(formValues);
-
+        // window.confirm ('sure??')
         console.log('formValues ', formValues)
     }
 
@@ -24,4 +34,11 @@ class GameCreateForm extends Component {
 
 }
 
-export default connect(null, { createJobPost })(GameCreateForm);
+const mapStateToProps = (state) => {
+    console.log(state.skills.allSkills, '[mapStateToProps]')
+    return {
+        allSkills: state.skills.allSkills
+    };
+};
+
+export default connect(mapStateToProps, { createJobPost, fetchAllSkills })(JobCreateForm);

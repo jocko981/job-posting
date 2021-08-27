@@ -50,13 +50,10 @@ const validate = (formValues) => {
     const msg = "You must enter this.";
 
     if (!formValues.name) {
-        errors.name = msg;
+        errors.added = msg;
     }
     if (!formValues.ID) {
-        errors.ID = msg;
-    }
-    if (!formValues.num_of_players_favourite) {
-        errors.num_of_players_favourite = msg;
+        errors.added = msg;
     }
 
     return errors;

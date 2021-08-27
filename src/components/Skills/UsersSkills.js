@@ -32,9 +32,7 @@ class UsersSkills extends React.Component {
                 <div>
                     <h1 className="ui header teal center aligned">All skills</h1>
 
-                    <div className="ui celled list">
-                        <ReactApexChart options={options} series={series} type="pie" height={450} />
-                    </div>
+                    <ReactApexChart options={options} series={series} type="pie" height={450} />
                 </div>
             );
         }

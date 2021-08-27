@@ -58,7 +58,7 @@ class RegisterPage extends React.Component {
                             </div>
                         </div>
 
-                        {this.state.selected ? <UserRegistration skills={this.props.skills} /> : <CompanyRegistration />}
+                        {this.state.selected ? <UserRegistration allSkills={this.props.allSkills} /> : <CompanyRegistration />}
                         
                         <div className="ui message">
                             Go back to <Link to="/login">Login</Link>
@@ -72,9 +72,9 @@ class RegisterPage extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state, '[mapStateToProps]')
+    console.log(state.skills.allSkills, '[mapStateToProps]')
     return {
-        skills: state.skills.data ? state.skills.data : []
+        allSkills: state.skills.allSkills
     };
 };
 
