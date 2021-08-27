@@ -17,7 +17,7 @@ class JobCreateForm extends Component {
     }
 
     onSubmit = (formValues) => {
-        // this.props.createJobPost(formValues);
+        this.props.createJobPost(formValues);
         // window.confirm ('sure??')
         console.log('formValues ', formValues)
     }
@@ -27,7 +27,7 @@ class JobCreateForm extends Component {
             <div className="Sticky_footer_Content_wrapper">
                 <h1 className="ui header teal center aligned">New Job Post</h1>
 
-                <JobForm onSubmit={this.onSubmit} />
+                <JobForm allSkills={this.props.allSkills} onSubmit={this.onSubmit} />
             </div>
         );
     }

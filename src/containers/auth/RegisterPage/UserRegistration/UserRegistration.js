@@ -29,7 +29,7 @@ const UserRegistration = ({ allSkills }) => {
         if (!allSkills.data) {
             return (
                 <div>
-                    <h1 className="ui header teal center aligned">Loading...</h1>
+                    <h3 className="ui header teal center aligned">Loading...</h3>
                 </div>
             );
         } else {
