@@ -4,14 +4,14 @@ import {
     FETCH_SELECTED_JOB_POST
 } from "../actions";
 
-const INTIAL_STATE = {
+const INITIAL_STATE = {
     allJobPosts: [],
     selectedJobPost: [],
     companyJobPosts: []
 };
 
 // using _lodash
-export default (state = INTIAL_STATE, action) => {
+export default (state = INITIAL_STATE, action) => {
     switch(action.type) {
         case FETCH_ALL_JOB_POSTS:
             return  { ...state, allJobPosts: action.payload };

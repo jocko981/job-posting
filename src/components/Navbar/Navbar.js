@@ -11,7 +11,7 @@ const Navbar = () => {
                 <div className="menu" tabIndex="-1">
                     <div className="ui teal header">Navigate:</div>
                     <Link to="/skills"><div className="item">Skills</div></Link>
-                    <Link to="/skills"><div className="item">--- Another Action '/skills' for now</div></Link>
+                    <Link to="/users-skills"><div className="item">Users Skills</div></Link>
 
                     <div className="divider"></div>
 

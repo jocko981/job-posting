@@ -7,7 +7,8 @@ import Footer from "../components/Footer/Footer";
 import LoginPage from "./auth/LoginPage/LoginPage";
 import RegisterPage from "./auth/RegisterPage/RegisterPage";
 // 
-import AllSkills from "../components/AllSkills/AllSkills";
+import AllSkills from "../components/Skills/AllSkills";
+import UsersSkills from "../components/Skills/UsersSkills";
 import HomePage from "./HomePage/HomePage";
 import SelectedJobPost from "../containers/HomePage/JobPosts/SelectedJobPost";
 import CompanyJobPosts from "../containers/HomePage/JobPosts/CompanyJobPosts";
@@ -27,6 +28,7 @@ const App = () => {
 
         <Switch>
           <Route exact path="/skills" component={AllSkills} />
+          <Route exact path="/users-skills" component={UsersSkills} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/register" component={RegisterPage} />
           <Route exact path="/" component={HomePage} />

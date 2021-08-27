@@ -77,7 +77,7 @@ const LoginPage = () => {
                         New to us? <Link to="/register" >Sign Up</Link>
                     </div>
                     <div className="ui message">
-                        Forgot password? <a>Click here</a>
+                        Forgot password? <a href="/">Click here (will go to home page)</a>
                     </div>
 
                 </div>

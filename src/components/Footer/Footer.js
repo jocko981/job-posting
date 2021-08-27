@@ -13,9 +13,9 @@ const Footer = () => {
                             <div className="three wide column">
                                 <h4 className="">Network</h4>
                                 <div className="ui link list">
-                                    <a>Neki link 3</a> <br />
-                                    <a>Neki link 6</a> <br />
-                                    <a>Neki link 9</a>
+                                    <a href="/">Neki link 3</a> <br />
+                                    <a href="/">Neki link 6</a> <br />
+                                    <a href="/">Neki link 9</a>
                                 </div>
                             </div>
 
@@ -23,9 +23,9 @@ const Footer = () => {
                             <div className="three wide column">
                                 <h4 className="">Network</h4>
                                 <div className="ui link list">
-                                    <a>Neki link 33</a> <br />
-                                    <a>Neki link 666</a> <br />
-                                    <a>Neki link 999</a>
+                                    <a href="/">Neki link 33</a> <br />
+                                    <a href="/">Neki link 666</a> <br />
+                                    <a href="/">Neki link 999</a>
                                 </div>
                             </div>
 
@@ -44,7 +44,7 @@ const Footer = () => {
 
                     <div className="ui center aligned inverted container">
                         <div className="ui horizontal small divided link list">
-                            <a className="" href="https://semantic-ui.com/" target="_blank">Free &amp; Open Source - Semantic UI CSS</a>
+                            <a className="" href="https://semantic-ui.com/" target="_blank" rel="noreferrer">Free &amp; Open Source - Semantic UI CSS</a>
                         </div>
                     </div>
 

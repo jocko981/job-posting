@@ -15,11 +15,10 @@ class AllSkills extends React.Component {
     }
 
     renderAllSkills() {
-        if (!this.props.skills.data) {
+        if (!this.props.allSkills.data) {
             return (
                 <div>
                     <h1 className="ui header teal center aligned">Loading...</h1>
-                    {console.log('h1 se render')}
                 </div>
             );
         } else {
@@ -28,7 +27,7 @@ class AllSkills extends React.Component {
                     <h1 className="ui header teal center aligned">All skills</h1>
 
                     <div className="ui celled list">
-                        {this.props.skills.data.map((skill) => {
+                        {this.props.allSkills.data.map((skill) => {
                             return (
                                 <div className="item" key={skill.id}>
 
@@ -59,7 +58,7 @@ class AllSkills extends React.Component {
 const mapStateToProps = (state) => {
     // console.log(state.skills, '[mapStateToProps]')
     return {
-        skills: state.skills ? state.skills : []
+        allSkills: state.skills.allSkills
     };
 };
 
