@@ -5,13 +5,13 @@ import {
 } from "../actions";
 
 const INTIAL_STATE = {
-    allJobPosts: null,
-    selectedJobPost: null,
-    companyJobPosts: null
+    allJobPosts: [],
+    selectedJobPost: [],
+    companyJobPosts: []
 };
 
 // using _lodash
-export default (state = {}, action) => {
+export default (state = INTIAL_STATE, action) => {
     switch(action.type) {
         case FETCH_ALL_JOB_POSTS:
             return  { ...state, allJobPosts: action.payload };

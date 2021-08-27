@@ -32,7 +32,7 @@ const App = () => {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/ads/edit/:id" component={JobEditForm} />
           <Route exact path="/ads/new" component={JobCreateForm} />
-          <Route exact path="/ads/company-ads" component={CompanyJobPosts} />
+          <Route exact path="/company-ads" component={CompanyJobPosts} />
           <Route exact path="/ads/:id" component={SelectedJobPost} />
 
           <Route component={err123} />

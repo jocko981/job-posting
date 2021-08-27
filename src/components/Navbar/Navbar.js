@@ -11,13 +11,13 @@ const Navbar = () => {
                 <div className="menu" tabIndex="-1">
                     <div className="ui teal header">Navigate:</div>
                     <Link to="/skills"><div className="item">Skills</div></Link>
-                    <Link to="/skills"><div className="item">--- Another Action</div></Link>
+                    <Link to="/skills"><div className="item">--- Another Action '/skills' for now</div></Link>
 
                     <div className="divider"></div>
 
                     <div className="ui teal header">My special options:</div>
-                    <Link to="/"><div className="item">Create New Post</div></Link>
-                    <Link to="/ads/company-ads"><div className="item">Company Job Posts</div></Link>
+                    <Link to="/ads/new"><div className="item">Create New Post</div></Link>
+                    <Link to="/company-ads"><div className="item">Company Job Posts</div></Link>
                 </div>
             </div>
         );

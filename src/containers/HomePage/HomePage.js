@@ -23,8 +23,6 @@ class HomePage extends React.Component {
     render() {
         return (
             <div className="Sticky_footer_Content_wrapper">
-
-                <h1 className="ui header teal center aligned">Home Page</h1>
                 
                 <div className="ui fluid two item menu">
                     <div className="item active">All Jobs</div>
@@ -32,8 +30,6 @@ class HomePage extends React.Component {
                 </div>
 
                 <AllJobPosts allJobPosts={this.props.allJobPosts.data} />
-
-                { console.log(this.props.allJobPosts.data, '[123]') }
 
             </div>
         );

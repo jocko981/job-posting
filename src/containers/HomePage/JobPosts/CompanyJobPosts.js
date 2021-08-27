@@ -72,10 +72,9 @@ class CompanyJobPosts extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state.jobPosts.data ? state.jobPosts.data : [], '[mapStateToProps]')
-    console.log(state)
+    console.log(state.jobPosts.companyJobPosts, '[mapStateToProps]')
     return {
-        companyJobPosts: state.jobPosts.companyJobPosts ? state.jobPosts.companyJobPosts : []
+        companyJobPosts: state.jobPosts.companyJobPosts
     };
 };
 
