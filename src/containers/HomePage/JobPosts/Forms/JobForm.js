@@ -11,7 +11,8 @@ class JobPostForm extends React.Component {
             // selected: true
             selectedSkills: [],
             startDate: null,
-            endDate: null
+            endDate: null,
+            selectedSkillsError: null
         };
 
     }
@@ -31,18 +32,22 @@ class JobPostForm extends React.Component {
         return (
             <div className="skills_select_list">
                 {/* <div className="ui divider"></div> */}
-                <h4>Select required skills:</h4>
-                <Select
-                    className="dropdown"
-                    placeholder="Skills"
-                    value={skillz.filter(obj => this.state.selectedSkills.includes(obj.value))} // set selected values
-                    options={skillz} // set list of the data
-                    onChange={this.handleChangeSkills} // assign onChange function
-                    isMulti
-                    isClearable
-                    isSearchable
-                    closeMenuOnSelect={false}
-                />
+                <div className="field">
+                    <h4>Select required skills:</h4>
+                    <Select
+                        className="dropdown"
+                        placeholder="Skills"
+                        value={skillz.filter(obj => this.state.selectedSkills.includes(obj.value))} // set selected values
+                        options={skillz} // set list of the data
+                        onChange={this.handleChangeSkills} // assign onChange function
+                        isMulti
+                        isClearable
+                        isSearchable
+                        closeMenuOnSelect={false}
+                    />
+
+                    <div className="ui error message">123{this.state.selectedSkillsError}</div>
+                </div>
             </div>
         );
     }
@@ -55,25 +60,28 @@ class JobPostForm extends React.Component {
 
     renderStartEndDate = () => {
         return (
-            <div className="two fields">
-                <div className="field">
-                    <DatePicker
-                        placeholderText="Start date"
-                        selected={this.state.startDate}
-                        onChange={date => this.setState({ startDate: date })}
-                        // this.setState({ startDate: date })
-                        dateFormat="dd/MM/yyyy"
-                        minDate={new Date()}
-                    />
-                </div>
-                <div className="field">
-                    <DatePicker
-                        placeholderText="End date"
-                        selected={this.state.endDate}
-                        onChange={date => this.setState({ endDate: date })}
-                        dateFormat="dd/MM/yyyy"
-                        minDate={new Date()}
-                    />
+            <div>
+                <h4>Date:</h4>
+                <div className="two fields">
+                    <div className="field">
+                        <DatePicker
+                            placeholderText="Start date"
+                            selected={this.state.startDate}
+                            onChange={date => this.setState({ startDate: date })}
+                            // this.setState({ startDate: date })
+                            dateFormat="dd/MM/yyyy"
+                            minDate={new Date()}
+                        />
+                    </div>
+                    <div className="field">
+                        <DatePicker
+                            placeholderText="End date"
+                            selected={this.state.endDate}
+                            onChange={date => this.setState({ endDate: date })}
+                            dateFormat="dd/MM/yyyy"
+                            minDate={new Date()}
+                        />
+                    </div>
                 </div>
             </div>
         );
@@ -147,7 +155,7 @@ class JobPostForm extends React.Component {
             });
         } else if (this.state.endDate) {
             let job_start = new Date();
-            
+
             const dd_start = String(job_start.getDate()).padStart(2, '0');
             const mm_start = String(job_start.getMonth() + 1).padStart(2, '0'); //January is 0!
             const yyyy_start = job_start.getFullYear();
@@ -164,6 +172,14 @@ class JobPostForm extends React.Component {
                 skills: this.state.selectedSkills,
                 start_date: job_start,
                 end_date: job_end
+            });
+        } else {
+
+            this.props.onSubmit({
+                ...formValues,
+                skills: this.state.selectedSkills,
+                start_date: this.state.startDate,
+                end_date: this.state.endDate
             });
         }
     }
@@ -188,6 +204,7 @@ class JobPostForm extends React.Component {
 }
 
 const validate = (formValues) => {
+    console.log(formValues, 'F Values')
     const errors = {};
     const msg = "You must enter this.";
 
