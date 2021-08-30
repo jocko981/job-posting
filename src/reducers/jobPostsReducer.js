@@ -22,7 +22,6 @@ export default (state = INITIAL_STATE, action) => {
         case FETCH_COMPANY_JOB_POSTS:
             return  { ...state, companyJobPosts: action.payload };
             
-            
         default:
             return state;
     }

@@ -16,7 +16,7 @@ const Navbar = () => {
                     <div className="divider"></div>
 
                     <div className="ui teal header">My special options:</div>
-                    <Link to="/ads/new"><div className="item">Create New Post</div></Link>
+                    <Link to="/ads/new"><div className="item">New Job Post</div></Link>
                     <Link to="/company-ads"><div className="item">Company Job Posts</div></Link>
                 </div>
             </div>

@@ -50,6 +50,7 @@ const LoginPage = () => {
                                         name="email"
                                         placeholder="E-mail address"
                                         onChange={handleChange}
+                                        maxLength="199"
                                     />
                                 </div>
                             </div>

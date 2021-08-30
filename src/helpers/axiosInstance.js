@@ -42,17 +42,31 @@ axios.interceptors.response.use(
     return response;
   },
   (err) => {
-    if(err.response.status === undefined) {
-      console.log("Server is not online...");
-    } else if(err.response.status === 403) {
+    if (err) {
+      console.log('err', err)
+      if (err.response.status === undefined) {
+        alert("'status' of undefined.. For this project turn off AdBlocker.");
+        console.log("Server is not online...");
 
-      localStorage.removeItem("token");
+      } else if (err.response.status === 403) {
+        alert("403 error pa si dobio push('/') i ovaj Alert");
+        localStorage.removeItem("token");
+        history.push("/");
 
-      history.push("/");
-    } else if(err.response.status === 404) {
-      history.push("/");
-      alert("404 error pa so dobio push('/') i ovaj Alert");
-    } 
+      } else if (err.response.status === 404) {
+        alert("404 error pa si dobio push('/') i ovaj Alert");
+        history.push("/");
+
+      } else if (err.response.status === 500) {
+        alert("500 error. Use XAMPP, start 'Apache' and 'MySQL'.");
+
+      } else if (err = 'Network Error') {
+        alert('Network Error')
+        alert('Connect with your database')
+
+      }
+
+    }
 
     return Promise.reject(err); // this as same as down below
     // new Promise((resolve, reject) => {
@@ -69,18 +83,18 @@ axios.interceptors.response.use(
 
 // export default (history = null) => {
 //     const baseURL = process.env.REACT_APP_BACKEND_URL;
-  
+
 //     let headers = {};
-  
+
 //     if (localStorage.token) {
 //       headers.Authorization = `Bearer ${localStorage.token}`;
 //     }
-  
+
 //     const axiosInstance = axios.create({
 //       baseURL: baseURL,
 //       headers,
 //     });
-  
+
 //     axiosInstance.interceptors.response.use(
 //       (response) =>
 //         new Promise((resolve, reject) => {
@@ -92,10 +106,10 @@ axios.interceptors.response.use(
 //             reject(error);
 //           });
 //         }
-  
+
 //         if (error.response.status === 403) {
 //           localStorage.removeItem("token");
-  
+
 //           if (history) {
 //             history.push("/auth/login");
 //           } else {
@@ -108,6 +122,6 @@ axios.interceptors.response.use(
 //         }
 //       }
 //     );
-  
+
 //     return axiosInstance;
 //   };

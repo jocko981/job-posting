@@ -101,6 +101,7 @@ const UserRegistration = ({ allSkills }) => {
                                 name="name"
                                 placeholder="Your name"
                                 onChange={handleChangeInputs}
+                                maxLength="199"
                             />
                         </div>
                     </div>
@@ -114,6 +115,7 @@ const UserRegistration = ({ allSkills }) => {
                                 name="email"
                                 placeholder="E-mail address"
                                 onChange={handleChangeInputs}
+                                maxLength="199"
                             />
                         </div>
                     </div>

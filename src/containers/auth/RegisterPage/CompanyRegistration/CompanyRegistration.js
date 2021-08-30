@@ -60,6 +60,7 @@ const CompanyRegistration = () => {
                                 name="email"
                                 placeholder="E-mail address"
                                 onChange={handleChangeInputs}
+                                maxLength="199"
                             />
                         </div>
                     </div>
