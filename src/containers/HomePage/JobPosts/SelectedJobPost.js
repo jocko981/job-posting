@@ -36,7 +36,7 @@ class SelectedJobPost extends React.Component {
                     <div>
                         <h1 className="ui header teal center aligned">{title}</h1>
                         <p><b>description:</b> {description}</p>
-                        <p><b>skills:</b> \ {skills.length > 0 ? skills.map((skill, index) => { return <span key={index}> {skill.name} \ </span> }) : "No skills required."}</p>
+                        <p><b>skills:</b> \ {skills && (skills.length > 0 ? skills.map((skill, index) => { return <span key={index}> {skill.name} \ </span> }) : "No skills required.")}</p>
                         <p><b>start_date:</b> {start_date}</p>
                         <p><b>end_date:</b> {end_date}</p>
                     </div>

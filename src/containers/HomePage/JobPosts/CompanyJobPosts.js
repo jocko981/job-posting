@@ -47,6 +47,9 @@ class CompanyJobPosts extends React.Component {
                                             Description: {post.description}
                                         </div>
                                         <div className="description">
+                                            Skills: \ {post.skills && (post.skills.length > 0 ? post.skills.map((skill, index) => { return <span key={index}> {skill.name} \ </span> }) : "No skills required.")}
+                                        </div>
+                                        <div className="description">
                                             Start Date: {post.start_date}
                                         </div>
                                         <div className="description">

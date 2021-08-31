@@ -23,19 +23,19 @@ const AllJobPosts = ({ allJobPosts }) => {
             );
         } else {
 
-            if (!allJobPosts.data.length) {
+            if (!allJobPosts.length) {
                 return (
                     <div>
                         <h4>There are currently no active Job posts.</h4>
 
                         <i className="huge meh outline icon" />
-                        
+
                         <h4>Take a look another day...</h4>
                     </div>
                 );
             } else {
                 return (
-                    allJobPosts.data.map(post => {
+                    allJobPosts.map(post => {
                         return (
                             <div className="item" key={post.id}>
 
@@ -49,10 +49,13 @@ const AllJobPosts = ({ allJobPosts }) => {
                                         Description: {post.description}
                                     </div>
                                     <div className="description">
-                                        Skills: {post.skills}
+                                        Skills: \ {post.skills && (post.skills.length > 0 ? post.skills.map((skill, index) => { return <span key={index}> {skill.name} \ </span> }) : "No skills required.")}
                                     </div>
                                     <div className="description">
-                                        Date: {post.skills}
+                                        Start Date: {post.start_date}
+                                    </div>
+                                    <div className="description">
+                                        End Date: {post.end_date}
                                     </div>
                                 </div>
                             </div>

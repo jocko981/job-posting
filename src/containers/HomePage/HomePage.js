@@ -39,7 +39,7 @@ class HomePage extends React.Component {
 const mapStateToProps = (state) => {
     // console.log(state, '[mapStateToProps]')
     return {
-        allJobPosts: state.jobPosts.allJobPosts ? state.jobPosts.allJobPosts : []
+        allJobPosts: state.jobPosts.allJobPosts
     };
 };
 
