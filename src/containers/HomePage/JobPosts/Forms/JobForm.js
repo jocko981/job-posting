@@ -230,7 +230,7 @@ const validate = (formValues) => {
     if (!formValues.description) {
         errors.description = msg;
     } else if (formValues.description.length < 10) {
-        errors.description = "Must be at leat 30 characters long.";
+        errors.description = "Must be at leat 10 characters long.";
     }
     // if (formValues.description && formValues.description < 30) {
     //     errors.description = "Job description must have more then 30 characters.";

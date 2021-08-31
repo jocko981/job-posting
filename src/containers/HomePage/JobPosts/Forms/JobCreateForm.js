@@ -17,8 +17,7 @@ class JobCreateForm extends Component {
 
     onSubmit = (formValues) => {
         this.props.createJobPost(formValues);
-        // window.confirm ('sure??')
-        console.log('formValues ', formValues)
+        // console.log('formValues ', formValues)
     }
 
     render() {
@@ -34,7 +33,7 @@ class JobCreateForm extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.skills.allSkills, '[mapStateToProps]')
+    // console.log(state.skills.allSkills, '[mapStateToProps]')
     return {
         allSkills: state.skills.allSkills
     };

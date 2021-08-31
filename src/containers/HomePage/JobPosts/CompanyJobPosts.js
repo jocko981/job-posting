@@ -39,7 +39,7 @@ class CompanyJobPosts extends React.Component {
 
                                     {/* {this.renderAdminEdit(post)} */}
 
-                                    <i className="large middle aligned icon bullhorn" />
+                                    <i className={`large middle aligned icon audio description ${post.active ? "blue" : "grey"}`} />
 
                                     <div className="content">
                                         <Link to={`/ads/${post.id}`} className="header">{post.title}</Link>
@@ -47,10 +47,10 @@ class CompanyJobPosts extends React.Component {
                                             Description: {post.description}
                                         </div>
                                         <div className="description">
-                                            Skills: {post.skills}
+                                            Start Date: {post.start_date}
                                         </div>
                                         <div className="description">
-                                            Date: {post.skills}
+                                            End Date: {post.end_date}
                                         </div>
                                     </div>
                                 </div>
