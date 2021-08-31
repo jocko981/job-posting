@@ -45,8 +45,12 @@ class JobPostForm extends React.Component {
                         isSearchable
                         closeMenuOnSelect={false}
                     />
+                    <div>
+                        <div className="ui error message">
+                            {this.state.selectedSkillsError}
+                        </div>
+                    </div>
 
-                    <div className="ui error message">123{this.state.selectedSkillsError}</div>
                 </div>
             </div>
         );
@@ -54,8 +58,10 @@ class JobPostForm extends React.Component {
     // handle onChange event of the dropdown
     handleChangeSkills = (event) => {
         this.setState({
-            selectedSkills: Array.isArray(event) ? event.map(x => x.value) : []
+            selectedSkills: Array.isArray(event) ? event.map(x => x.value) : [],
+            selectedSkillsError: null
         });
+
     }
 
     renderStartEndDate = () => {
@@ -122,66 +128,74 @@ class JobPostForm extends React.Component {
     }
 
     onSubmit = (formValues) => {
-        if (this.state.startDate && this.state.endDate) {
-            const dd_start = String(this.state.startDate.getDate()).padStart(2, '0');
-            const mm_start = String(this.state.startDate.getMonth() + 1).padStart(2, '0'); //January is 0!
-            const yyyy_start = this.state.startDate.getFullYear();
-
-            const dd_end = String(this.state.endDate.getDate()).padStart(2, '0');
-            const mm_end = String(this.state.endDate.getMonth() + 1).padStart(2, '0'); //January is 0!
-            const yyyy_end = this.state.endDate.getFullYear();
-
-            const job_start = dd_start + '-' + mm_start + '-' + yyyy_start;
-            const job_end = dd_end + '-' + mm_end + '-' + yyyy_end;
-
-            this.props.onSubmit({
-                ...formValues,
-                skills: this.state.selectedSkills,
-                start_date: job_start,
-                end_date: job_end
-            });
-        } else if (this.state.startDate) {
-            const dd_start = String(this.state.startDate.getDate()).padStart(2, '0');
-            const mm_start = String(this.state.startDate.getMonth() + 1).padStart(2, '0'); //January is 0!
-            const yyyy_start = this.state.startDate.getFullYear();
-
-            const job_start = dd_start + '-' + mm_start + '-' + yyyy_start;
-
-            this.props.onSubmit({
-                ...formValues,
-                skills: this.state.selectedSkills,
-                start_date: job_start,
-                end_date: this.state.endDate
-            });
-        } else if (this.state.endDate) {
-            let job_start = new Date();
-
-            const dd_start = String(job_start.getDate()).padStart(2, '0');
-            const mm_start = String(job_start.getMonth() + 1).padStart(2, '0'); //January is 0!
-            const yyyy_start = job_start.getFullYear();
-
-            const dd_end = String(this.state.endDate.getDate()).padStart(2, '0');
-            const mm_end = String(this.state.endDate.getMonth() + 1).padStart(2, '0'); //January is 0!
-            const yyyy_end = this.state.endDate.getFullYear();
-
-            job_start = dd_start + '-' + mm_start + '-' + yyyy_start;
-            const job_end = dd_end + '-' + mm_end + '-' + yyyy_end;
-
-            this.props.onSubmit({
-                ...formValues,
-                skills: this.state.selectedSkills,
-                start_date: job_start,
-                end_date: job_end
-            });
+        if (!this.state.selectedSkills.length) {
+            this.setState({ selectedSkillsError: "Your job must require at least 1 skill." })
         } else {
+            this.setState({ selectedSkillsError: null })
 
-            this.props.onSubmit({
-                ...formValues,
-                skills: this.state.selectedSkills,
-                start_date: this.state.startDate,
-                end_date: this.state.endDate
-            });
+            if (this.state.startDate && this.state.endDate) {
+                const dd_start = String(this.state.startDate.getDate()).padStart(2, '0');
+                const mm_start = String(this.state.startDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+                const yyyy_start = this.state.startDate.getFullYear();
+
+                const dd_end = String(this.state.endDate.getDate()).padStart(2, '0');
+                const mm_end = String(this.state.endDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+                const yyyy_end = this.state.endDate.getFullYear();
+
+                const job_start = yyyy_start + '-' + mm_start + '-' + dd_start;
+                const job_end = yyyy_end + '-' + mm_end + '-' + dd_end;
+
+                this.props.onSubmit({
+                    ...formValues,
+                    skills: this.state.selectedSkills,
+                    start_date: job_start,
+                    end_date: job_end
+                });
+            } else if (this.state.startDate) {
+                const dd_start = String(this.state.startDate.getDate()).padStart(2, '0');
+                const mm_start = String(this.state.startDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+                const yyyy_start = this.state.startDate.getFullYear();
+
+                const job_start = yyyy_start + '-' + mm_start + '-' + dd_start;
+
+                this.props.onSubmit({
+                    ...formValues,
+                    skills: this.state.selectedSkills,
+                    start_date: job_start,
+                    end_date: this.state.endDate
+                });
+            } else if (this.state.endDate) {
+                let job_start = new Date();
+
+                const dd_start = String(job_start.getDate()).padStart(2, '0');
+                const mm_start = String(job_start.getMonth() + 1).padStart(2, '0'); //January is 0!
+                const yyyy_start = job_start.getFullYear();
+
+                const dd_end = String(this.state.endDate.getDate()).padStart(2, '0');
+                const mm_end = String(this.state.endDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+                const yyyy_end = this.state.endDate.getFullYear();
+
+                job_start = yyyy_start + '-' + mm_start + '-' + dd_start;
+                const job_end = yyyy_end + '-' + mm_end + '-' + dd_end;
+
+                this.props.onSubmit({
+                    ...formValues,
+                    skills: this.state.selectedSkills,
+                    start_date: job_start,
+                    end_date: job_end
+                });
+            } else {
+
+                this.props.onSubmit({
+                    ...formValues,
+                    skills: this.state.selectedSkills,
+                    start_date: this.state.startDate,
+                    end_date: this.state.endDate
+                });
+            }
+
         }
+
     }
 
     render() {
@@ -204,7 +218,6 @@ class JobPostForm extends React.Component {
 }
 
 const validate = (formValues) => {
-    console.log(formValues, 'F Values')
     const errors = {};
     const msg = "You must enter this.";
 
@@ -214,6 +227,8 @@ const validate = (formValues) => {
 
     if (!formValues.description) {
         errors.description = msg;
+    } else if (formValues.description.length < 10) {
+        errors.description = "Must be at leat 30 characters long.";
     }
     // if (formValues.description && formValues.description < 30) {
     //     errors.description = "Job description must have more then 30 characters.";

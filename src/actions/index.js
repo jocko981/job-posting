@@ -57,7 +57,7 @@ export const fetchCompanyJobPosts = () => async (dispatch) => {
 
 export const createJobPost = (formValues) => async (dispatch, getState) => {
     // const { userId } = getState().auth;
-    const response = await axios.post(API_URLS.CREATE_JOB_POST, { ...formValues });
+    const response = await axios.post(API_URLS.CREATE_JOB_POST, formValues);
 
     console.log('create Job Post - response', response);
     console.log('create Job Post - formValues', formValues);
