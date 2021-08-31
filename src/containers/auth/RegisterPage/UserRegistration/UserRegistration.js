@@ -24,46 +24,34 @@ const UserRegistration = ({ allSkills }) => {
     }
 
     // NOTE: data for react-select MUST have keyValues: 'label' and 'value'
-    let skillz = [];
     const renderSkillsDropdown = () => {
-        if (!allSkills.data) {
-            return (
-                <div>
-                    <h3 className="ui header teal center aligned">Loading...</h3>
-                </div>
-            );
-        } else {
-            if (allSkills.data.length > 0) {
-                skillz = allSkills.data.map(item => {
-                    return { value: item.id, label: item.name }
-                });
-            } else {
-                const skillzRezerva = [{ id: 1, name: 'php' }, { id: 2, name: 'laravel' },
-                { id: 3, name: 'javascript' }, { id: 4, name: 'java' },
-                { id: 5, name: 'nodejs' }, { id: 6, name: 'python' }]
+        let skillz = [{ value: 1, label: 'php' }, { value: 2, label: 'laravel' },
+        { value: 3, label: 'javascript' }, { value: 4, label: 'java' },
+        { value: 5, label: 'nodejs' }, { value: 6, label: 'python' }, { value: 7, label: 'REZERVA' }];
 
-                skillz = skillzRezerva.map(item => {
-                    return { value: item.id, label: item.name }
-                });
-            }
-
+        if (allSkills.data && allSkills.data.length > 0) {
+            skillz = allSkills.data.map(item => {
+                return { value: item.id, label: item.name }
+            });
         }
 
         return (
             <div className="skills_select_list">
                 {/* <div className="ui divider"></div> */}
-                <h4>Select your skills:</h4>
-                <Select
-                    className="dropdown"
-                    placeholder="Your skills..."
-                    value={skillz.filter(obj => selectedSkills.includes(obj.value))} // set selected values
-                    options={skillz} // set list of the data
-                    onChange={handleChangeSkills} // assign onChange function
-                    isMulti
-                    isClearable
-                    isSearchable
-                    closeMenuOnSelect={false}
-                />
+                <div className="field">
+                    <h4>Select required skills:</h4>
+                    <Select
+                        className="dropdown"
+                        placeholder="Skills"
+                        value={skillz.filter(obj => selectedSkills.includes(obj.value))} // set selected values
+                        options={skillz} // set list of the data
+                        onChange={handleChangeSkills} // assign onChange function
+                        isMulti
+                        isClearable
+                        isSearchable
+                        closeMenuOnSelect={false}
+                    />
+                </div>
             </div>
         );
 
@@ -80,7 +68,7 @@ const UserRegistration = ({ allSkills }) => {
             setRegisterErr("You need to possess at least one skill")
         } else if (registerPasswordValidation(registerValues.password)) {
             // for User POST req we need - { ...registerValues, skills: selectedSkills }
-            userRegistration({ ...registerValues, allSkills: selectedSkills });
+            userRegistration({ ...registerValues, skills: selectedSkills });
             setRegisterErr(null);
         } else {
             setRegisterErr("Check if you typed everything well, password must be 8 chars")

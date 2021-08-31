@@ -3,7 +3,7 @@ import history from "../history";
 
 const API_URLS = {
     FETCH_ALL_SKILLS: "/skills",
-    FETCH_USERS_SKILLS: "stats/skills",
+    FETCH_USERS_SKILLS: "/stats/skills",
 
     FETCH_ALL_JOB_POSTS: "/ads",
     FETCH_COMPANY_JOB_POSTS: "/company/ads",
@@ -63,7 +63,8 @@ export const createJobPost = (formValues) => async (dispatch, getState) => {
     console.log('create Job Post - formValues', formValues);
 
     dispatch({ type: CREATE_JOB_POST, payload: response });
-
+if(response.status == 200) {
     history.push("/");
+}
     // za ovo pa ne treba reducer lol
 };

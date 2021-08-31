@@ -19,9 +19,9 @@ class JobPostForm extends React.Component {
 
     // NOTE: data for react-select MUST have keyValues: 'label' and 'value'
     renderSkillsDropdown = () => {
-        let skillz = [{ id: 1, name: 'php' }, { id: 2, name: 'laravel' },
-        { id: 3, name: 'javascript' }, { id: 4, name: 'java' },
-        { id: 5, name: 'nodejs' }, { id: 6, name: 'python' }, { id: 7, name: 'REZERVA' }];
+        let skillz = [{ value: 1, label: 'php' }, { value: 2, label: 'laravel' },
+        { value: 3, label: 'javascript' }, { value: 4, label: 'java' },
+        { value: 5, label: 'nodejs' }, { value: 6, label: 'python' }, { value: 7, label: 'REZERVA' }];
 
         if (this.props.allSkills.data && this.props.allSkills.data.length > 0) {
             skillz = this.props.allSkills.data.map(item => {
