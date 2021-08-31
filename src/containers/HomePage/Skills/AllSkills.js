@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchAllSkills } from "../../actions";
+import { fetchAllSkills } from "../../../actions";
 
 class AllSkills extends React.Component {
     constructor(props) {

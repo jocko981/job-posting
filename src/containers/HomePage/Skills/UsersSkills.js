@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchUsersSkills } from "../../actions";
+import { fetchUsersSkills } from "../../../actions";
 import ReactApexChart from "react-apexcharts";
 
 class UsersSkills extends React.Component {
