@@ -63,7 +63,7 @@ export const createJobPost = (formValues) => async (dispatch, getState) => {
     console.log('create Job Post - formValues', formValues);
 
     dispatch({ type: CREATE_JOB_POST, payload: response });
-if(response.status == 200) {
+if(response.status === 200) {
     history.push("/");
 }
     // za ovo pa ne treba reducer lol

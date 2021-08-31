@@ -15,6 +15,7 @@ class AllSkills extends React.Component {
     }
 
     renderAllSkills() {
+        console.log(this.props.allSkills)
         if (!this.props.allSkills.data) {
             return (
                 <div>
@@ -22,27 +23,40 @@ class AllSkills extends React.Component {
                 </div>
             );
         } else {
-            return (
-                <div>
-                    <h1 className="ui header teal center aligned">All skills</h1>
 
-                    <div className="ui celled list">
-                        {this.props.allSkills.data.map((skill) => {
-                            return (
-                                <div className="item" key={skill.id}>
+            if (!this.props.allSkills.data.length) {
+                return (
+                    <div>
+                        <h4>There are currently Skills to display.</h4>
 
-                                    <i className="large middle aligned icon thumbtack" />
+                        <i className="huge meh outline icon" />
 
-                                    <div className="content">
-                                        {skill.name}
-                                    </div>
-
-                                </div>
-                            );
-                        })}
+                        <h4>Take a look another day...</h4>
                     </div>
-                </div>
-            );
+                );
+            } else {
+                return (
+                    <div>
+                        <h1 className="ui header teal center aligned">All skills</h1>
+
+                        <div className="ui celled list">
+                            {this.props.allSkills.data.map((skill) => {
+                                return (
+                                    <div className="item" key={skill.id}>
+
+                                        <i className="large middle aligned icon thumbtack" />
+
+                                        <div className="content">
+                                            {skill.name}
+                                        </div>
+
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                );
+            }
         }
     }
 
