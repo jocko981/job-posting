@@ -77,6 +77,7 @@ class JobPostForm extends React.Component {
                             // this.setState({ startDate: date })
                             dateFormat="dd/MM/yyyy"
                             minDate={new Date()}
+                            isClearable
                         />
                     </div>
                     <div className="field">
@@ -86,6 +87,7 @@ class JobPostForm extends React.Component {
                             onChange={date => this.setState({ endDate: date })}
                             dateFormat="dd/MM/yyyy"
                             minDate={new Date()}
+                            isClearable
                         />
                     </div>
                 </div>
