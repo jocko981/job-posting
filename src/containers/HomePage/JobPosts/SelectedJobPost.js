@@ -55,7 +55,7 @@ class SelectedJobPost extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.jobPosts.selectedJobPost, '[mapStateToProps]')
+    // console.log(state.jobPosts.selectedJobPost, '[mapStateToProps]')
     return {
         selectedJobPost: state.jobPosts.selectedJobPost
     };

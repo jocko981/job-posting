@@ -3,18 +3,19 @@ import { Field, formValues, reduxForm } from "redux-form";
 import Select from 'react-select';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import _ from "lodash";
 
 class JobPostForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             // selected: true
-            selectedSkills: [],
+            selectedSkills: props.selectedJobPost.ad ? props.selectedJobPost.ad.skills.map(item => { return item.id }) : [],
             startDate: null,
             endDate: null,
             selectedSkillsError: null
         };
-
+        console.log(props.selectedJobPost.ad, props.allSkills, ' props ')
     }
 
     // NOTE: data for react-select MUST have keyValues: 'label' and 'value'
@@ -23,7 +24,7 @@ class JobPostForm extends React.Component {
         { value: 3, label: 'javascript' }, { value: 4, label: 'java' },
         { value: 5, label: 'nodejs' }, { value: 6, label: 'python' }, { value: 7, label: 'REZERVA' }];
 
-        if (this.props.allSkills.data && this.props.allSkills.data.length > 0) {
+        if (this.props.allSkills.data && this.props.allSkills.data.length > 0 && this.props.selectedJobPost.ad) {
             skillz = this.props.allSkills.data.map(item => {
                 return { value: item.id, label: item.name }
             });
