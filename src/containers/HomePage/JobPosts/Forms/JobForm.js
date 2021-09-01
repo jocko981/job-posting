@@ -15,7 +15,7 @@ class JobPostForm extends React.Component {
             endDate: null,
             selectedSkillsError: null
         };
-        console.log(props.selectedJobPost.ad, props.allSkills, ' props ')
+        console.log(' props for ad ', props.selectedJobPost.ad)
     }
 
     // NOTE: data for react-select MUST have keyValues: 'label' and 'value'
@@ -45,6 +45,7 @@ class JobPostForm extends React.Component {
                         isClearable
                         isSearchable
                         closeMenuOnSelect={false}
+                        noOptionsMessage={({inputValue}) => !inputValue ? 'No options left' : "No results found"}
                     />
                     <div>
                         <div className="ui error message">
