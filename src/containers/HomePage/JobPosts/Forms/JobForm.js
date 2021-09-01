@@ -24,7 +24,7 @@ class JobPostForm extends React.Component {
         { value: 3, label: 'javascript' }, { value: 4, label: 'java' },
         { value: 5, label: 'nodejs' }, { value: 6, label: 'python' }, { value: 7, label: 'REZERVA' }];
 
-        if (this.props.allSkills.data && this.props.allSkills.data.length > 0 && this.props.selectedJobPost.ad) {
+        if (this.props.allSkills.data && this.props.allSkills.data.length > 0) {
             skillz = this.props.allSkills.data.map(item => {
                 return { value: item.id, label: item.name }
             });
