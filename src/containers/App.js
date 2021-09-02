@@ -14,6 +14,11 @@ import SelectedJobPost from "../containers/HomePage/JobPosts/SelectedJobPost";
 import CompanyJobPosts from "../containers/HomePage/JobPosts/CompanyJobPosts";
 import JobCreateForm from "../containers/HomePage/JobPosts/Forms/JobCreateForm";
 import JobEditForm from "../containers/HomePage/JobPosts/Forms/JobEditForm";
+export const ROUTE_URLS = {
+  ALL_SKILLS: "/skills",
+  USERS_STATS: "/users-skills"
+}
+
 function err123() {
   return <h2>Err page</h2>;
 }

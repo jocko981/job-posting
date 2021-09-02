@@ -14,6 +14,19 @@ class CompanyJobPosts extends React.Component {
     componentDidMount() {
         this.props.fetchCompanyJobPosts();
     }
+    
+    // renderAdminEdit(game) {
+    //     return (
+    //         <div className="right floated content">
+    //             <Link to={`/admin/games/edit/${game.ID}`} className="ui button primary">
+    //                 Edit
+    //             </Link>
+    //             <Link to={`/admin/games/delete/${game.ID}`} className="ui button negative">
+    //                 Delete
+    //             </Link>
+    //         </div>
+    //     );
+    // }
 
     renderCompanyJobPosts = () => {
         if (!this.props.companyJobPosts.data) {

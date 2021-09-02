@@ -19,9 +19,6 @@ class SelectedJobPost extends React.Component {
         if (this.props.selectedJobPost.status === 404) {
             return (
                 <h1 className="ui header teal center aligned">This Job post doesn't exist...</h1>
-                // <div>
-                //     <h4>This Job posts doesn't exist...</h4>
-                // </div>
             );
         } else {
 

@@ -3,7 +3,6 @@ import { Field, formValues, reduxForm } from "redux-form";
 import Select from 'react-select';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import _ from "lodash";
 
 class JobPostForm extends React.Component {
     constructor(props) {
