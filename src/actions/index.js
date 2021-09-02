@@ -8,6 +8,7 @@ const API_URLS = {
     FETCH_ALL_JOB_POSTS: "/ads",
     FETCH_COMPANY_JOB_POSTS: "/company/ads",
     FETCH_SELECTED_JOB_POST: "/ads/", // + ${id} of ad
+    EDIT_SELECTED_JOB_POST: "/ads/", // + ${id} of ad
     CREATE_JOB_POST: "/ads/"
 }
 // dispatch Types: // skills
@@ -17,6 +18,7 @@ export const FETCH_USERS_SKILLS = "FETCH_USERS_SKILLS";
 export const FETCH_ALL_JOB_POSTS = "FETCH_ALL_JOB_POSTS";
 export const FETCH_COMPANY_JOB_POSTS = "FETCH_COMPANY_JOB_POSTS";
 export const FETCH_SELECTED_JOB_POST = "FETCH_SELECTED_JOB_POST";
+export const EDIT_SELECTED_JOB_POST = "EDIT_SELECTED_JOB_POST";
 export const CREATE_JOB_POST = "CREATE_JOB_POST";
 
 // skills
@@ -62,9 +64,19 @@ export const createJobPost = (formValues) => async (dispatch, getState) => {
     console.log('create Job Post - response', response);
     console.log('create Job Post - formValues', formValues);
 
-    dispatch({ type: CREATE_JOB_POST, payload: response });
-if(response.status === 200) {
-    history.push("/");
-}
+    dispatch({ type: CREATE_JOB_POST, payload: response.data });
+    if (response.status === 200) {
+        history.push("/");
+    }
     // za ovo pa ne treba reducer lol
 };
+
+export const editJobPost = (id, formValues) => async (dispatch) => {
+    const response = await axios.put(API_URLS.EDIT_SELECTED_JOB_POST + id, formValues);
+
+    dispatch({ type: EDIT_SELECTED_JOB_POST, payload: response.data });
+    if (response.status === 200) {
+        history.push("/company-ads");
+    }
+    // za ovo pa ne treba reducer lol
+}

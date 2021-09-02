@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchSelectedJobPost, fetchAllSkills } from "../../../../actions";
+import { fetchSelectedJobPost, fetchAllSkills, editJobPost } from "../../../../actions";
 import JobForm from "./JobForm";
 
 class UserEditForm extends Component {
@@ -58,4 +58,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { fetchSelectedJobPost, fetchAllSkills })(UserEditForm);
+export default connect(mapStateToProps, { fetchSelectedJobPost, fetchAllSkills, editJobPost })(UserEditForm);

@@ -15,7 +15,7 @@ class JobPostForm extends React.Component {
             endDate: null,
             selectedSkillsError: null
         };
-        console.log(' props for ad ', props.selectedJobPost.ad)
+        // console.log(' props for ad ', props.selectedJobPost.ad)
     }
 
     // NOTE: data for react-select MUST have keyValues: 'label' and 'value'
