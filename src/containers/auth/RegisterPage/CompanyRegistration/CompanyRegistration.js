@@ -21,7 +21,7 @@ const CompanyRegistration = () => {
         });
     }
 
-    const onLoginSubmit = (e) => {
+    const onRegisterSubmit = (e) => {
         e.preventDefault();
 
         if (registerPasswordValidation(registerValues.password)) {
@@ -30,11 +30,13 @@ const CompanyRegistration = () => {
         } else {
             setRegisterErr("Check if you typed everything well, password must be 8 chars")
         }
+        
+        setRegisterValues({ name: "", email: "", password: "", password_confirmation: "" })
     }
 
     return (
         <>
-            <form onSubmit={onLoginSubmit} className="ui large form">
+            <form onSubmit={onRegisterSubmit} className="ui large form">
                 <div className="ui stacked segment">
 
                     <div className="field">

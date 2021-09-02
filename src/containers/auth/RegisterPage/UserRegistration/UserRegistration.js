@@ -62,7 +62,7 @@ const UserRegistration = ({ allSkills }) => {
         setSelectedSkills(Array.isArray(event) ? event.map(x => x.value) : []);
     }
 
-    const onLoginSubmit = (e) => {
+    const onRegisterSubmit = (e) => {
         e.preventDefault();
         if (selectedSkills.length < 1) {
             setRegisterErr("You need to possess at least one skill")
@@ -73,11 +73,14 @@ const UserRegistration = ({ allSkills }) => {
         } else {
             setRegisterErr("Check if you typed everything well, password must be 8 chars")
         }
+
+        setRegisterValues({ name: "", email: "", password: "", password_confirmation: "" })
+        setSelectedSkills([]);
     }
 
     return (
         <>
-            <form onSubmit={onLoginSubmit} className="ui large form">
+            <form onSubmit={onRegisterSubmit} className="ui large form">
                 <div className="ui stacked segment">
 
                     <div className="field">

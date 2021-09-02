@@ -25,6 +25,8 @@ const LoginPage = () => {
         } else {
             setLoginErr("Kao neki Err ako je Password < 8 chars")
         }
+
+        setLoginValues({ email: "", password: "" });
     }
 
     return (

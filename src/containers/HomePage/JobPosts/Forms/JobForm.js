@@ -10,7 +10,7 @@ class JobPostForm extends React.Component {
         super(props);
         this.state = {
             // selected: true
-            selectedSkills: props.selectedJobPost.ad ? props.selectedJobPost.ad.skills.map(item => { return item.id }) : [],
+            selectedSkills: props.selectedJobPost ? props.selectedJobPost.ad.skills.map(item => { return item.id }) : [],
             startDate: null,
             endDate: null,
             selectedSkillsError: null
