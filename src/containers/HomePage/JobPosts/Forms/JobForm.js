@@ -67,6 +67,7 @@ class JobPostForm extends React.Component {
     }
 
     renderStartEndDate = () => {
+        const monthsInAdvance = 13;
         return (
             <div>
                 <h4>Date:</h4>
@@ -79,6 +80,7 @@ class JobPostForm extends React.Component {
                             // this.setState({ startDate: date })
                             dateFormat="dd/MM/yyyy"
                             minDate={new Date()}
+                            maxDate={this.state.endDate ? this.state.endDate : new Date(new Date().setMonth(new Date().getMonth() + monthsInAdvance))}
                             isClearable
                         />
                     </div>
@@ -88,7 +90,8 @@ class JobPostForm extends React.Component {
                             selected={this.state.endDate}
                             onChange={date => this.setState({ endDate: date })}
                             dateFormat="dd/MM/yyyy"
-                            minDate={new Date()}
+                            minDate={this.state.startDate ? this.state.startDate : new Date()}
+                            maxDate={this.state.startDate ? new Date(new Date(this.state.startDate).setMonth(new Date().getMonth() + monthsInAdvance)) : new Date(new Date().setMonth(new Date().getMonth() + monthsInAdvance))} // end date is max 6
                             isClearable
                         />
                     </div>
