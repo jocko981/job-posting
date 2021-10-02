@@ -7,14 +7,14 @@ class CompanyJobPosts extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // selected: true
+            loadingText: "Loading..."
         };
     }
 
     componentDidMount() {
         this.props.fetchCompanyJobPosts();
     }
-    
+
     // renderAdminEdit(game) {
     //     return (
     //         <div className="right floated content">
@@ -28,14 +28,24 @@ class CompanyJobPosts extends React.Component {
     //     );
     // }
 
+    renderLoadingText = () => {
+        if (this.props.companyJobPosts.loading) {
+            setInterval(() => {
+                this.setState({ loadingText: "Error fetching data :(" })
+            }, 3900);
+        }
+
+        return this.state.loadingText;
+    }
+
     renderCompanyJobPosts = () => {
-        if (!this.props.companyJobPosts.data) {
+        if (this.props.companyJobPosts.loading) {
             return (
-                <h1 className="ui header teal center aligned">Loading...</h1>
+                <h1 className="ui header teal center aligned">{this.renderLoadingText()}</h1>
             );
         } else {
-            
-            if (!this.props.companyJobPosts.data.data.length) {
+
+            if (!this.props.companyJobPosts.data.length) {
                 return (
                     <div>
                         <h4>Your company has no Job posts...</h4>
@@ -79,6 +89,7 @@ class CompanyJobPosts extends React.Component {
     }
 
     render() {
+
         return (
             <div className="Sticky_footer_Content_wrapper" >
                 {this.renderCompanyJobPosts()}
@@ -89,7 +100,6 @@ class CompanyJobPosts extends React.Component {
 
 const mapStateToProps = (state) => {
     // console.log(state.jobPosts.companyJobPosts, '[mapStateToProps]')
-    console.log(state, '[STATE - mapStateToProps]')
     return {
         companyJobPosts: state.jobPosts.companyJobPosts
     };

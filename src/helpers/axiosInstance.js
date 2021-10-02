@@ -44,24 +44,25 @@ axios.interceptors.response.use(
   (err) => {
     if (err) {
       console.log('err', err)
-      if (err.response.status === undefined) {
-        alert("'status' of undefined.. For this project turn off AdBlocker.");
-        console.log("Server is not online...");
+      // if (err.response.status === undefined) {
+      //   alert("'status' of undefined.. For this project turn off AdBlocker.");
+      //   console.log("Server is not online...");
 
-      } else if (err.response.status === 403) {
-        alert("403 error pa si dobio push('/') i ovaj Alert");
-        localStorage.removeItem("token");
-        history.push("/");
+      // } else if (err.response.status === 403) {
+      //   alert("403 error pa si dobio push('/') i ovaj Alert");
+      //   localStorage.removeItem("token");
+      //   history.push("/");
 
-      } else if (err.response.status === 404) {
-        alert("404 error pa si dobio push('/') i ovaj Alert");
-        history.push("/");
+      // } else if (err.response.status === 404) {
+      //   alert("404 error pa si dobio push('/') i ovaj Alert");
+      //   history.push("/");
 
-      } else if (err.response.status === 500) {
-        alert("500 error. Use XAMPP, start 'Apache' and 'MySQL'.");
+      // } else if (err.response.status === 500) {
+      //   alert("500 error. Use XAMPP, start 'Apache' and 'MySQL'.");
 
-      } else if (err = 'Network Error') {
-        alert('Network Error')
+      // } else 
+      if (err = 'Network Error') {
+        alert("it's: Network Error")
         alert('Connect with your database')
 
       }

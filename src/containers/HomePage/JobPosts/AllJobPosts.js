@@ -2,15 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const AllJobPosts = ({ allJobPosts }) => {
+    console.log(allJobPosts);
 
     const renderAllJobPosts = () => {
-        if (!allJobPosts) {
+        if (allJobPosts.loading) {
             return (
                 <h1 className="ui header teal center aligned">Loading...</h1>
             );
         } else {
 
-            if (!allJobPosts.length) {
+            if (!allJobPosts.data.length) {
                 return (
                     <div>
                         <h4>There are currently no active Job posts.</h4>

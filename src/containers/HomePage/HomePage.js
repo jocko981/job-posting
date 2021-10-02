@@ -23,13 +23,13 @@ class HomePage extends React.Component {
     render() {
         return (
             <div className="Sticky_footer_Content_wrapper">
-                
+
                 <div className="ui fluid two item menu">
                     <div className="item active">All Jobs</div>
                     <div className="item">Expired Job posts</div>
                 </div>
 
-                <AllJobPosts allJobPosts={this.props.allJobPosts.data} />
+                <AllJobPosts allJobPosts={this.props.allJobPosts} />
 
             </div>
         );
