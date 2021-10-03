@@ -63,6 +63,7 @@ class CompanyJobPosts extends React.Component {
                                     {/* {this.renderAdminEdit(post)} */}
 
                                     <i className={`large middle aligned icon audio description ${post.active ? "blue" : "grey"}`} />
+                                    {/* BUG IN BACKEND, for every jobpost (active = 0)    :(  */}
 
                                     <div className="content">
                                         <Link to={`/ads/${post.id}`} className="header">{post.title}</Link>

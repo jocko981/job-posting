@@ -50,34 +50,6 @@ class SelectedJobPost extends React.Component {
                 );
             }
         }
-
-
-
-        // if (this.props.selectedJobPost.status === 404) {
-        //     return (
-        //         <h1 className="ui header teal center aligned">This Job post doesn't exist...</h1>
-        //     );
-        // } else {
-
-        //     if (!this.props.selectedJobPost.data) {
-        //         return (
-        //             <h1 className="ui header teal center aligned">{this.renderLoadingText()}</h1>
-        //         );
-        //     } else {
-        //         const { title, description, skills, start_date, end_date } = this.props.selectedJobPost.data;
-        //         // skills - is Array (should be Array of strings)
-        //         return (
-        //             <div>
-        //                 <h1 className="ui header teal center aligned">{title}</h1>
-        //                 <p><b>description:</b> {description}</p>
-        //                 <p><b>skills:</b> \ {skills && (skills.length > 0 ? skills.map((skill, index) => { return <span key={index}> {skill.name} \ </span> }) : "No skills required.")}</p>
-        //                 <p><b>start_date:</b> {start_date}</p>
-        //                 <p><b>end_date:</b> {end_date}</p>
-        //             </div>
-        //         );
-        //     }
-        // }
-
     }
 
     render() {
