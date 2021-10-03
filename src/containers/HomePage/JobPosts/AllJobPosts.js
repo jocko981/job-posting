@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const AllJobPosts = ({ allJobPosts }) => {
-    const [loadingText, setLoadingText] = useState("Loading...")
+    const [loadingText, setLoadingText] = useState("Loading...");
 
-    const renderLoadingText = () => {
-        setTimeout(() => {
+    useEffect(() => {
+        const timer = setTimeout(() => {
             if (allJobPosts.loading) {
                 setLoadingText("Error fetching data :(");
             }
         }, 3900);
 
-        return loadingText;
-    }
+        return () => clearTimeout(timer);
+    }, []);
 
     const renderAllJobPosts = () => {
         if (allJobPosts.loading) {
             return (
-                <h1 className="ui header teal center aligned">{renderLoadingText()}</h1>
+                <h1 className="ui header teal center aligned">{loadingText}</h1>
             );
         } else {
 

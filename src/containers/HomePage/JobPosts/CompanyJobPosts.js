@@ -11,10 +11,6 @@ class CompanyJobPosts extends React.Component {
         };
     }
 
-    componentDidMount() {
-        this.props.fetchCompanyJobPosts();
-    }
-
     // renderAdminEdit(post) {
     //     return (
     //         <div className="right floated content">
@@ -28,20 +24,24 @@ class CompanyJobPosts extends React.Component {
     //     );
     // }
 
-    renderLoadingText = () => {
-        setTimeout(() => {
+    componentDidMount() {
+        this.props.fetchCompanyJobPosts();
+
+        this.timer = setTimeout(() => {
             if (this.props.companyJobPosts.loading) {
-                this.setState({ loadingText: "Error fetching data :(" });
+                this.setState({ loadingText: "Error fetching data :(" })
             }
         }, 3900);
+    }
 
-        return this.state.loadingText;
+    componentWillUnmount() {
+        clearTimeout(this.timer);
     }
 
     renderCompanyJobPosts = () => {
         if (this.props.companyJobPosts.loading) {
             return (
-                <h1 className="ui header teal center aligned">{this.renderLoadingText()}</h1>
+                <h1 className="ui header teal center aligned">{this.state.loadingText}</h1>
             );
         } else {
 
@@ -63,7 +63,7 @@ class CompanyJobPosts extends React.Component {
                                     {/* {this.renderAdminEdit(post)} */}
 
                                     <i className={`large middle aligned icon audio description ${post.active ? "blue" : "grey"}`} />
-                                    {/* BUG IN BACKEND, for every jobpost (active = 0)    :(  */}
+                                    {/* BUG IN BACKEND, for every jobpost (active = 0) 😟 */}
 
                                     <div className="content">
                                         <Link to={`/ads/${post.id}`} className="header">{post.title}</Link>
