@@ -32,6 +32,7 @@ export const fetchAllSkills = () => async (dispatch) => {
 
 export const fetchUsersSkills = () => async (dispatch) => {
     const response = await axios.get(API_URLS.FETCH_USERS_SKILLS);
+    console.log(response)
 
     dispatch({ type: FETCH_USERS_SKILLS, payload: response.data });
 };
@@ -45,12 +46,9 @@ export const fetchAllJobPosts = () => async (dispatch) => {
 
 export const fetchSelectedJobPost = (id) => async (dispatch) => {
     const response = await axios.get(API_URLS.FETCH_SELECTED_JOB_POST + id);
+    console.log(response.data.data, 'res')
 
-    // if (response.data.status === 404) {
-    //     alert('This job post does not exist...')
-    // }
-
-    dispatch({ type: FETCH_SELECTED_JOB_POST, payload: response.data });
+    dispatch({ type: FETCH_SELECTED_JOB_POST, payload: response.data.data });
 };
 
 export const fetchCompanyJobPosts = () => async (dispatch) => {

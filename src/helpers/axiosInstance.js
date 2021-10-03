@@ -62,8 +62,8 @@ axios.interceptors.response.use(
 
       // } else 
       if (err = 'Network Error') {
-        alert("it's: Network Error")
-        alert('Connect with your database')
+        alert(`Network Error
+        Connect with your database.`)
 
       }
 

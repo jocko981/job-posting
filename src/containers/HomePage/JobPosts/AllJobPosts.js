@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const AllJobPosts = ({ allJobPosts }) => {
-    console.log(allJobPosts);
+    const [loadingText, setLoadingText] = useState("Loading...")
+
+    const renderLoadingText = () => {
+        setTimeout(() => {
+            if (allJobPosts.loading) {
+                setLoadingText("Error fetching data :(");
+            }
+        }, 3900);
+
+        return loadingText;
+    }
 
     const renderAllJobPosts = () => {
         if (allJobPosts.loading) {
             return (
-                <h1 className="ui header teal center aligned">Loading...</h1>
+                <h1 className="ui header teal center aligned">{renderLoadingText()}</h1>
             );
         } else {
 
@@ -23,7 +33,7 @@ const AllJobPosts = ({ allJobPosts }) => {
                 );
             } else {
                 return (
-                    allJobPosts.map(post => {
+                    allJobPosts.data.map(post => {
                         return (
                             <div className="item" key={post.id}>
                                 {/* {this.renderAdminEdit(post)} */}

@@ -15,13 +15,13 @@ class CompanyJobPosts extends React.Component {
         this.props.fetchCompanyJobPosts();
     }
 
-    // renderAdminEdit(game) {
+    // renderAdminEdit(post) {
     //     return (
     //         <div className="right floated content">
-    //             <Link to={`/admin/games/edit/${game.ID}`} className="ui button primary">
+    //             <Link to={`/ads/${post.ID}`} className="ui button primary">
     //                 Edit
     //             </Link>
-    //             <Link to={`/admin/games/delete/${game.ID}`} className="ui button negative">
+    //             <Link to={`/ads/${post.ID}`} className="ui button negative">
     //                 Delete
     //             </Link>
     //         </div>
@@ -29,11 +29,11 @@ class CompanyJobPosts extends React.Component {
     // }
 
     renderLoadingText = () => {
-        if (this.props.companyJobPosts.loading) {
-            setInterval(() => {
-                this.setState({ loadingText: "Error fetching data :(" })
-            }, 3900);
-        }
+        setTimeout(() => {
+            if (this.props.companyJobPosts.loading) {
+                this.setState({ loadingText: "Error fetching data :(" });
+            }
+        }, 3900);
 
         return this.state.loadingText;
     }
@@ -56,7 +56,7 @@ class CompanyJobPosts extends React.Component {
             } else {
                 return (
                     <div className="ui celled list">
-                        {this.props.companyJobPosts.data.data.map(post => {
+                        {this.props.companyJobPosts.data.map(post => {
                             return (
                                 <div className="item" key={post.id}>
 
@@ -99,7 +99,7 @@ class CompanyJobPosts extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state.jobPosts.companyJobPosts, '[mapStateToProps]')
+    console.log(state.jobPosts.companyJobPosts, '[mapStateToProps]')
     return {
         companyJobPosts: state.jobPosts.companyJobPosts
     };

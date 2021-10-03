@@ -6,7 +6,7 @@ import {
 
 const INITIAL_STATE = {
     allJobPosts: { loading: true, data: [] },
-    selectedJobPost: { loading: true, data: [] },
+    selectedJobPost: { loading: true, data: null },
     companyJobPosts: { loading: true, data: [] }
 };
 
@@ -20,7 +20,7 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, selectedJobPost: { loading: false, data: action.payload } };
 
         case FETCH_COMPANY_JOB_POSTS:
-            return { ...state, companyJobPosts: { loading: false, data: action.payload } };
+            return { ...state, companyJobPosts: { loading: false, data: action.payload.data } };
 
         default:
             return state;
